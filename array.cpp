@@ -50,9 +50,9 @@ int main(int argc, char* argv[]) {
     
     // std::vector<int> array(std::vector<int>(12), 12); // 隣接行列
 	// std::vector<int> customerSeatsCapacity(12); // 客席で0番から11番まで計12席。座れる人数
+	// std::vector<int> customerWaiting(12); // 待っている顧客でそれぞれ人数を持っている
 	std::vector<int> customerSeatsStayTime(12); // 客席で0番から11番まで計12席で客の残り滞在時間
-	std::vector<int> customerWaiting(12); // 待っている顧客でそれぞれ人数を持っている
-    int timeSeconds;
+    
     int waitingCustomerNumber = 0;
 
     // コマンドライン引数のチェック
@@ -114,17 +114,6 @@ int main(int argc, char* argv[]) {
                 break;
             }
         }
-        // もしいる場合
-            
-
-            // 顧客待ち行列から待っていたが客席に移動した顧客を削除する
-            // 待ち行列を一つずつ進める
-            // 顧客の滞在時間を5~30分の間で確率で設定する
-            // 設定した滞在時間を"customerSeatsStayTime"に設定する
-        // いない場合
-            // なにもしない
-        
-
         // 全体の時間を一秒進める
         timeMinutes++;
         // 各座席の残り滞在時間を一秒減らす
