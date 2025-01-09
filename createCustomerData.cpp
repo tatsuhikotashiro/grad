@@ -3,107 +3,72 @@
 #include <sstream>
 #include <vector>
 #include <random>
-
-int createWaitingTime()
-{
-
-    // 乱数生成器を初期化
-    static std::random_device seed_gen;
-    static std::mt19937 engine(seed_gen());
-    static std::uniform_int_distribution<> dist(1, 100);
-
-    // 1〜100の乱数を生成
-    int random_value = dist(engine);
-
-    // 80%の確率で15〜20の値を生成
-    if (random_value <= 80)
-    {
-        std::uniform_int_distribution<> dist_15_20(15, 20);
-        return dist_15_20(engine);
-    }
-    else
-    {
-        // それ以外の値は5〜30の間で等確率に生成
-        std::uniform_int_distribution<> dist_5_30(5, 30);
-        int value = dist_5_30(engine);
-
-        // 15〜20の値は既に生成済みなので除外
-        while (value >= 15 && value <= 20)
-        {
-            value = dist_5_30(engine);
-        }
-        return value;
-    }
-}
+#include <algorithm>
 
 int main(int argc, char *argv[])
 {
-    using namespace std;
-
-    // コマンドライン引数のチェック
-    if (argc != 2)
-    {
-        cerr << "引数の数が間違っています．" << endl;
-        cerr << "./getline customers.txt" << endl;
-        return 1;
-    }
-
-    // C++のファイル入力のための準備
-    ifstream ifs(argv[1], ios::in);
-    // ファイルを開くのに失敗したときの処理
-    if (!ifs)
-    {
-        cerr << "Error: file not opened." << endl;
-        return 1;
-    }
-
-    string tmp;
-    int num;
-    int sum = 0;
-    std::vector<std::vector<int>> data;
-    std::vector<int> cus(3);
-
-    // getline()で1行ずつ読み込む
-    while (getline(ifs, tmp))
-    {
-        // cout << tmp << endl; // そのまま出力
-        stringstream ss;
-        ss << tmp;
-        string a, b, c;
-        ss >> a >> b >> c;
-        cus.at(0) = stoi(a);
-        cus.at(1) = stoi(b);
-        cus.at(2) = stoi(c);
-        // cout << "---------\n";
-        data.push_back(cus);
-    }
-    // ファイルを閉じる
-    ifs.close();
-
-    
-
     // 出力ファイルを開く
-    std::ofstream output_file("output.txt");
-    if (!output_file.is_open())
+    std::ofstream outputFile("output.txt");
+    if (!outputFile.is_open())
     {
         std::cerr << "出力ファイルを開けませんでした。" << std::endl;
         return 1;
     }
-    int cusNum = 25;
-    // 乱数生成器を初期化
-    static std::random_device seed_gen;
-    static std::mt19937 engine(seed_gen());
-    static std::uniform_int_distribution<> dist(0, 59);
-    for(int i=0;i < cusNum;i++){
-        
+    int cusNum = 200;
+    int now = 0;
+    std::random_device seed_gen;
+    std::default_random_engine engine(seed_gen());
+
+    // 到着時間の設定------------------------
+    // 到着間隔を指数分布で作成し，0スタートの変数に加えたものを到着時刻と定義する
+    std::exponential_distribution<> dist_a(1/4.0);
+    std::vector<int> arriveTime;
+    for (int i = 0; i < cusNum; i++)
+    {
+        // 指数分布で乱数を生成する
+        double result_a = dist_a(engine);
+        // std::cout << result_a << std::endl;
+        now += (int)result_a;
+        arriveTime.push_back(now);
+        // 指数分布終わり
     }
 
-    
-        output_file << line << std::endl;
+    // サービス時間の設定----------------------
+    // 平均20.0、標準偏差5.0で分布させる
+    std::normal_distribution<> dist_s(20.0, 5.0);
+    std::vector<int> serviceTime;
+    // 正規分布で乱数を生成する
+    for (int i = 0; i < cusNum; i++)
+    {
+        double result_s = dist_s(engine);
+        serviceTime.push_back((int)result_s);
+    }
 
+    // 集団サイズの設定------------------------
+    // シードは共通
+    // 1. 一様分布の場合
+    // 1以上6以下の値を等確率で発生させる
+    std::uniform_int_distribution<> dist_g(1, 4);
+    std::vector<int> groupSize;
+    for (int n = 0; n < cusNum; ++n)
+    {
+        // 一様整数分布で乱数を生成する
+        int result_g = dist_g(engine);
+        groupSize.push_back(result_g);
+    }
+    // 2. 正規分布の場合
+    // 平均2.0、標準偏差1.0で分布させる，ただし，最大値は6のため6で切り捨て,最小値は1のため切り上げる
+    // std::normal_distribution<> dist_s(4.0, 1.0);
+    // std::vector<int> serviceTime;
+    // 正規分布で乱数を生成す
+   
+
+    for (int i = 0; i < cusNum; i++)
+    {
+        outputFile << arriveTime.at(i) << ' ' << serviceTime.at(i) << ' ' << groupSize.at(i) << std::endl;
+    }
     // ファイルを閉じる
-    input_file.close();
-    output_file.close();
+    outputFile.close();
 
     return 0;
 }

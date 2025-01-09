@@ -3,12 +3,65 @@
 #include <fstream>
 #include <sstream>
 
+std::vector<int> generateHourWaiting(double lambda)
+{
+    // 平均到着率 (人/時) = lambda
+
+    // シミュレーション時間 (時)
+    double simulation_time = 1.0;
+
+    // 乱数生成器
+    std::random_device seed_gen;
+    std::mt19937 engine(seed_gen());
+    std::uniform_real_distribution<> dist(0.0, 1.0);
+
+    // 到着時刻を格納するリスト
+    std::vector<double> arrival_times;
+
+    // 最初の到着時刻を生成
+    double current_time = -log(1 - dist(engine)) / lambda;
+
+    // シミュレーション時間まで到着時刻を生成
+    while (current_time <= simulation_time)
+    {
+        arrival_times.push_back(current_time);
+        current_time += -log(1 - dist(engine)) / lambda;
+    }
+
+    // 到着時刻のリストを出力
+    //   cout << "到着時刻リスト (時間):" << endl;
+    for (double arrival_time : arrival_times)
+    {
+        cout << (int)(arrival_time * 60) << endl;
+    }
+}
+
+std::vector<int> divideNumberFromRangeAB(int n, int a, int b)
+{
+    std::random_device random;
+    std::mt19937 gen(random());
+    std::uniform_int_distribution<> dist(a, b);
+
+    std::vector<int> result;
+    while (n > 0)
+    {
+        int i = dist(gen);
+        if (i > n)
+            i = n;
+        result.push_back(i);
+        n -= i;
+    }
+
+    return result;
+}
+
 // 滞在時刻と席ごとにあとどれだけ顧客が座っているのかを受け取って空いている席に割り当てる
-bool assignCustomersEasyWay(int stayTime, std::vector<int> &customerSeatsStayTime)
+// 入力: 待っている顧客の滞在時間, 各座席の顧客の残り滞在時間
+bool assignCustomersEasyWay(int stayTime, int group, std::vector<int> &customerSeatsStayTime, std::vector<int> &cap)
 {
     for (int i = 0; i < customerSeatsStayTime.size(); i++)
     {
-        if (customerSeatsStayTime.at(i) == 0)
+        if (customerSeatsStayTime.at(i) == 0 && cap.at(i) >= group)
         {
             customerSeatsStayTime.at(i) = stayTime;
             return true;
@@ -20,16 +73,18 @@ bool assignCustomersEasyWay(int stayTime, std::vector<int> &customerSeatsStayTim
 int main(int argc, char *argv[])
 {
     std::vector<int> customerSeatsStayTime(12); // 客席で0番から11番まで計12席で客の残り滞在時間
+    std::vector<int> cap = {1, 2, 2, 2, 2, 2, 2, 4, 4, 4, 6, 6}; // 客数
     int waitingCustomerNumber = 0;
-    std::string tmp; // 入力に使う
+    std::string tmp; // 文字列の入力に一時的に使う
     int num;
     int sum = 0;
     std::vector<std::vector<int>> data;
-    std::vector<int> cus(3);
-    std::string a, b, c, d;
+    std::vector<int> cus(3); // 文字列の入力に一時的に使う
+    std::string a, b, c, d;  // 文字列の入力に一時的に使う
 
     // シミュレーション終了時刻（分）
-    int endTime = 60;
+    // 11時から24時までだったら13時間のためそれを分に直して記述する
+    int endTime = 60 * 13;
     // シミュレーション中に使用する時刻を保存する変数（分）
     int timeMinutes = 0; // シミュレーション開始時刻は11時とする
 
@@ -50,31 +105,18 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    // // getline()で1行ずつ読み込む
-    // while (getline(ifs, tmp))
-    // {
-    //     std::stringstream ss;
-    //     ss << tmp;
-    //     ss >> a >> b >> c;
-    //     cus.at(0) = std::__cxx11::stoi(a);
-    //     cus.at(1) = std::__cxx11::stoi(b);
-    //     cus.at(2) = std::__cxx11::stoi(c);
-    //     data.push_back(cus);
-    // }
-
-    // getline()で1行ずつ読み込む(4要素ver)    
+    // getline()で1行ずつ読み込む
     while (getline(ifs, tmp))
     {
         std::stringstream ss;
         ss << tmp;
-        ss >> a >> b >> c >> d;
-        cus.at(0) = std::__cxx11::stoi(a);
-        cus.at(1) = std::__cxx11::stoi(b);
-        cus.at(2) = std::__cxx11::stoi(c);
-        cus.at(2) = std::__cxx11::stoi(d);
+        ss >> a >> b >> c;
+        cus.at(0) = std::__cxx11::stoi(a);// 到着
+        cus.at(1) = std::__cxx11::stoi(b);// 滞在
+        cus.at(2) = std::__cxx11::stoi(c);// 人数
         data.push_back(cus);
     }
-    ファイルを閉じる
+    // ファイルを閉じる
     ifs.close();
 
     // シミュレーションの現在時刻が終了時刻よりも小さければ時刻を1ずつ進めながら繰り返す
@@ -84,11 +126,12 @@ int main(int argc, char *argv[])
         while (waitingCustomerNumber >= 0 && data.at(waitingCustomerNumber).at(1) <= timeMinutes)
         {
             // 客の滞在時間をcustomerSeatsStayTimeに入れる
-            if (assignCustomersEasyWay(data.at(waitingCustomerNumber).at(2), customerSeatsStayTime))
+            if (assignCustomersEasyWay(data.at(waitingCustomerNumber).at(1), data.at(waitingCustomerNumber).at(2), customerSeatsStayTime, cap))
             {
-                data.at(waitingCustomerNumber).push_back(timeMinutes - data.at(waitingCustomerNumber).at(1));
-                waitingCustomerNumber++;
-                if (waitingCustomerNumber >= data.size())
+                // 現在時刻と到着時刻の差が待ち時間になるのでそれを後ろに追加する
+                data.at(waitingCustomerNumber).push_back(timeMinutes - data.at(waitingCustomerNumber).at(0));
+                waitingCustomerNumber++;// 待ち顧客の先頭を次に進める
+                if (waitingCustomerNumber >= data.size())// 最後まで行ったらマイナスにして顧客を案内しきったことを示す
                 {
                     waitingCustomerNumber = -1;
                 }
