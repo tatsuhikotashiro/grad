@@ -26,7 +26,7 @@ int main(int argc, char* args[]){
     // ファイルを閉じる
     ifs.close();
 
-    std::ofstream ofs("customerDataSplit.txt");
+    std::ofstream ofs("customerDataSplit2.txt");
     if (!ofs.is_open())
     {
         std::cerr << "出力ファイルを開けませんでした。" << std::endl;

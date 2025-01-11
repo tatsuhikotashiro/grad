@@ -46,14 +46,14 @@ void minusTime(std::vector<int> &SeatsStay)
 
 int main(int argc, char *argv[])
 {
-    std::vector<int> SeatsStay1(12);
+    std::vector<int> SeatsStay1(28);
     // for (int i : SeatsStay1){
     //     std::cout << i << std::endl;
     // }
     std::vector<int> SeatsStay2(11);                             // 2人隣接してやるとき
     std::vector<int> SeatsStay3(10);                             // 3人隣接してやるとき
     std::vector<int> SeatsStay4(9);                              // 3人隣接してやるとき
-    std::vector<int> cap = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}; // 客数
+    std::vector<int> cap = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4}; // 客数
     std::vector<int> cap2 = {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2};   // cap[0],cap[1]空いてる→cap2[0]空いてる，cap[1],cap[2]空いてる→cap2[1]空いてる，cap[i],cap[i+1]空いてる→cap2[i]空いてる
     std::vector<int> cap3 = {3, 3, 3, 3, 3, 3, 3, 3, 3, 3};      // cap[0],cap[1],cap[2]空いてる→cap3[0]空いてる，cap[1],cap[2], cap[3]空いてる→cap2[1]空いてる，cap[i],cap[i+1]空いてる→cap2[i]空いてる
     std::vector<int> cap4 = {4, 4, 4, 4, 4, 4, 4, 4, 4};         // cap[i],cap[i+1], cap[i+2], cap[i+3]空いてる→cap4[i]空いてる

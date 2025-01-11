@@ -254,10 +254,8 @@ int main(int argc, char *argv[])
     // std::cout << data.at(0).size() << std::endl;
     for (int i = 0; i < (int)data.size(); i++)
     {
-        for (int j = 0; j < (int)data.at(i).at(2); j++)
-        {
-            outputFile << data.at(i).at(3) << std::endl;
-        }
+
+        outputFile << data.at(i).at(3) << std::endl;
     }
     outputFile.close();
     std::cout << "待ち時間は" << outputFilename << "に書き込みました" << std::endl;

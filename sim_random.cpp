@@ -20,16 +20,29 @@ bool fifo(int stayTime, int group, std::vector<int> &customerSeatsStayTime, std:
     return false;
 }
 
-bool randomService(int stayTime, int group, std::vector<int> &customerSeatsStayTime, std::vector<int> &cap)
+bool siro(int stayTime, int group, std::vector<int> &customerSeatsStayTime, std::vector<int> &cap)
 {
-
+    std::vector<int> available; // 割当て可能な添え字はtrue
     for (int i = 0; i < (int)customerSeatsStayTime.size(); i++)
     {
         if (customerSeatsStayTime.at(i) == 0 && cap.at(i) >= group)
         {
-            customerSeatsStayTime.at(i) = stayTime;
+            available.push_back(i);
+        }
+        // 乱数生成器を初期化
+        if(!available.empty()){
+            std::random_device rd;
+            std::mt19937 gengen(rd());
+            std::uniform_int_distribution<> distrib(0, available.size() - 1);
+
+            // ランダムなインデックスを生成
+            int randomIndex = distrib(gengen);
+
+            // ランダムに選択された要素を出力
+            customerSeatsStayTime.at(randomIndex) = stayTime;
             return true;
         }
+        
     }
     return false;
 }
@@ -129,7 +142,7 @@ int main(int argc, char *argv[])
             std::cout << waitingCustomerNumber << ":" << data.at(waitingCustomerNumber).at(0) << ":" << data.at(waitingCustomerNumber).at(1) << ":" << data.at(waitingCustomerNumber).at(2) << std::endl;
 
             // 客の滞在時間をSeatsStayに入れる
-            if (fifo(data.at(waitingCustomerNumber).at(1), data.at(waitingCustomerNumber).at(2), SeatsStay1, cap))
+            if (siro(data.at(waitingCustomerNumber).at(1), data.at(waitingCustomerNumber).at(2), SeatsStay1, cap))
             {
                 // 現在時刻と到着時刻の差が待ち時間になるのでそれを後ろに追加する
                 data.at(waitingCustomerNumber).push_back(timeMinutes - data.at(waitingCustomerNumber).at(0)); // 修正: at(0) を at(1) に変更
@@ -140,7 +153,7 @@ int main(int argc, char *argv[])
                     break;
                 }
             }
-            else if (fifo(data.at(waitingCustomerNumber).at(1), data.at(waitingCustomerNumber).at(2), SeatsStay2, cap2) && data.at(waitingCustomerNumber).at(2) == 2)
+            else if (siro(data.at(waitingCustomerNumber).at(1), data.at(waitingCustomerNumber).at(2), SeatsStay2, cap2) && data.at(waitingCustomerNumber).at(2) == 2)
             {
                 // 2席占有されるので反映する
                 for (int i = 0; i < (int)SeatsStay2.size(); ++i)
@@ -162,7 +175,7 @@ int main(int argc, char *argv[])
                     break;
                 }
             }
-            else if (fifo(data.at(waitingCustomerNumber).at(1), data.at(waitingCustomerNumber).at(2), SeatsStay3, cap3) && data.at(waitingCustomerNumber).at(2) == 3)
+            else if (siro(data.at(waitingCustomerNumber).at(1), data.at(waitingCustomerNumber).at(2), SeatsStay3, cap3) && data.at(waitingCustomerNumber).at(2) == 3)
             {
                 for (int i = 0; i < (int)SeatsStay3.size(); ++i)
                 {
@@ -182,7 +195,7 @@ int main(int argc, char *argv[])
                     break;
                 }
             }
-            else if (fifo(data.at(waitingCustomerNumber).at(1), data.at(waitingCustomerNumber).at(2), SeatsStay4, cap4) && data.at(waitingCustomerNumber).at(2) == 4)
+            else if (siro(data.at(waitingCustomerNumber).at(1), data.at(waitingCustomerNumber).at(2), SeatsStay4, cap4) && data.at(waitingCustomerNumber).at(2) == 4)
             {
                 for (int i = 0; i < (int)SeatsStay4.size(); ++i)
                 {
