@@ -58,6 +58,8 @@ int main(int argc, char *argv[])
     std::vector<int> cap3 = {3, 3, 3, 3, 3, 3, 3, 3, 3, 3};      // cap[0],cap[1],cap[2]空いてる→cap3[0]空いてる，cap[1],cap[2], cap[3]空いてる→cap2[1]空いてる，cap[i],cap[i+1]空いてる→cap2[i]空いてる
     std::vector<int> cap4 = {4, 4, 4, 4, 4, 4, 4, 4, 4};         // cap[i],cap[i+1], cap[i+2], cap[i+3]空いてる→cap4[i]空いてる
 
+    std::vector<double> occupancy;
+
     // SeatsStay2[i] = max(SeatsStay[i], SeatsStay[i+1])
     // SeatsStay3[i] = max(SeatsStay[i], SeatsStay[i+1], SeatsStay[i+2])
     // SeatsStay4[i] = max(max(SeatsStay[i], SeatsStay[i+1]), std::max(SeatsStay[i+2],SeatsStay[i+3]))
@@ -108,6 +110,13 @@ int main(int argc, char *argv[])
     // シミュレーションの現在時刻が終了時刻よりも小さければ時刻を1ずつ進めながら繰り返す
     while (timeMinutes < endTime)
     {
+        int usedcnt = 0;
+        for(int i=0;i<(int)SeatsStay1.size();i++){
+            if(SeatsStay1.at(i)>0){
+                usedcnt++;
+            }
+        }
+        occupancy.push_back((double)usedcnt/SeatsStay1.size());
         // 顧客リストの先頭の顧客の到着時刻が現在の時刻以前だった場合、すでに到着しているとみなして顧客の割当てを行う
         // std::cout << waitingCustomerNumber << ":" << data.at(waitingCustomerNumber).at(0) << ":" << timeMinutes << std::endl;
         while (waitingCustomerNumber < (int)data.size() && data.at(waitingCustomerNumber).at(0) <= timeMinutes)
@@ -261,4 +270,37 @@ int main(int argc, char *argv[])
     }
     outputFile.close();
     std::cout << "待ち時間は" << outputFilename << "に書き込みました" << std::endl;
+
+    std::string fn = "./result/rslt.txt";
+    std::ofstream outputFile2(fn);
+    if (!outputFile2.is_open())
+    {
+        std::cerr << "出力ファイルを開けませんでした。" << std::endl;
+        return 1;
+    }
+
+    // std::cout << data.at(0).size() << std::endl;
+    for (int i = 0; i < (int)data.size(); i++)
+    {
+        for (int j = 0; j < (int)data.at(i).at(2); j++)
+        {
+            outputFile2 << i+1 << ' ' << data.at(i).at(3) << std::endl;
+        }
+    }
+    outputFile2.close();
+
+    std::string fn2 = "./result/occupancy.txt";
+    std::ofstream outputFile3(fn2);
+    if (!outputFile3.is_open())
+    {
+        std::cerr << "出力ファイルを開けませんでした。" << std::endl;
+        return 1;
+    }
+
+    // std::cout << data.at(0).size() << std::endl;
+    for (double tmp : occupancy)
+    {
+        outputFile3 << tmp << std::endl;
+    }
+    outputFile3.close();
 }

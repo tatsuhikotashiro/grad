@@ -4,11 +4,18 @@
 #include <vector>
 #include <random>
 #include <algorithm>
+#include <string>
 
 int main(int argc, char *argv[])
 {
     // 出力ファイルを開く
-    std::ofstream outputFile("output_forgroup.txt");
+    std::string output_filename;
+    double lambda, mu, sigma;
+
+    std::cout << "出力ファイル名 指数分布のλ 正規分布の平均値 正規分布の標準偏差 の順に入力" << std::endl;
+    std::cin >> output_filename >> lambda >> mu >> sigma;
+
+    std::ofstream outputFile(output_filename);
     if (!outputFile.is_open())
     {
         std::cerr << "出力ファイルを開けませんでした。" << std::endl;
@@ -21,8 +28,8 @@ int main(int argc, char *argv[])
 
     // 到着時間の設定------------------------
     // 到着間隔を指数分布で作成し，0スタートの変数に加えたものを到着時刻と定義する
-    // std::exponential_distribution<> dist_a(1/4.0);
-    std::exponential_distribution<> dist_a(1/10.0);
+
+    std::exponential_distribution<> dist_a(1/lambda);
     std::vector<int> arriveTime;
     for (int i = 0; i < cusNum; i++)
     {
@@ -35,8 +42,7 @@ int main(int argc, char *argv[])
     }
 
     // サービス時間の設定----------------------
-    // 平均20.0、標準偏差5.0で分布させる
-    std::normal_distribution<> dist_s(105.0, 7.0);
+    std::normal_distribution<> dist_s(mu, sigma);
     std::vector<int> serviceTime;
     // 正規分布で乱数を生成する
     for (int i = 0; i < cusNum; i++)
@@ -57,12 +63,6 @@ int main(int argc, char *argv[])
         int result_g = dist_g(engine);
         groupSize.push_back(result_g);
     }
-    // 2. 正規分布の場合
-    // 平均2.0、標準偏差1.0で分布させる，ただし，最大値は6のため6で切り捨て,最小値は1のため切り上げる
-    // std::normal_distribution<> dist_s(4.0, 1.0);
-    // std::vector<int> serviceTime;
-    // 正規分布で乱数を生成す
-   
 
     for (int i = 0; i < cusNum; i++)
     {
