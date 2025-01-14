@@ -284,7 +284,7 @@ int main(int argc, char *argv[])
     {
         for (int j = 0; j < (int)data.at(i).at(2); j++)
         {
-            outputFile2 << i+1 << ' ' << data.at(i).at(3) << std::endl;
+            outputFile2 << i+1 << ' ' << data.at(i).at(0) << ' ' << data.at(i).at(3) << std::endl;
         }
     }
     outputFile2.close();

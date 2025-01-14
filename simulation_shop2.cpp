@@ -20,19 +20,6 @@ bool fifo(int stayTime, int group, std::vector<int> &customerSeatsStayTime, std:
     return false;
 }
 
-bool randomService(int stayTime, int group, std::vector<int> &customerSeatsStayTime, std::vector<int> &cap)
-{
-
-    for (int i = 0; i < (int)customerSeatsStayTime.size(); i++)
-    {
-        if (customerSeatsStayTime.at(i) == 0 && cap.at(i) >= group)
-        {
-            customerSeatsStayTime.at(i) = stayTime;
-            return true;
-        }
-    }
-    return false;
-}
 void minusTime(std::vector<int> &SeatsStay)
 {
     for (auto &&stayTime : SeatsStay)
@@ -136,7 +123,7 @@ int main(int argc, char *argv[])
                 waitingCustomerNumber++;                                                                      // 待ち顧客の先頭を次に進める
                 if (waitingCustomerNumber >= (int)data.size())                                                // 最後まで行ったらマイナスにして顧客を案内しきったことを示す
                 {
-                    // waitingCustomerNumber = -1;
+                    waitingCustomerNumber = -1;
                     break;
                 }
             }

@@ -1,3 +1,4 @@
+// 先頭が割当てられないなら次に並んでいる客を検討するやり方
 #include <iostream>
 #include <vector>
 #include <fstream>
@@ -20,30 +21,6 @@ bool fifo(int stayTime, int group, std::vector<int> &customerSeatsStayTime, std:
     return false;
 }
 
-bool siro(int stayTime, int group, std::vector<int> &customerSeatsStayTime, std::vector<int> &seatCapacity) {
-    std::vector<int> availableSeats; 
-
-    // 空き席を探索
-    for (int i = 0; i < (int)customerSeatsStayTime.size(); i++) {
-        if (customerSeatsStayTime[i] == 0 && seatCapacity[i] >= group) {
-            availableSeats.push_back(i);
-        }
-    }
-
-    // 乱数生成器を初期化
-    std::random_device rd;
-    std::mt19937 gengen(rd()); 
-    std::uniform_int_distribution<> distrib(0, availableSeats.size() - 1);
-
-    // 空き席があればランダムに割り当てる
-    if (!availableSeats.empty()) {
-        int randomIndex = distrib(gengen);
-        customerSeatsStayTime[randomIndex] = stayTime;
-        return true;
-    }
-
-    return false; 
-}
 void minusTime(std::vector<int> &SeatsStay)
 {
     for (auto &&stayTime : SeatsStay)
@@ -69,11 +46,14 @@ int main(int argc, char *argv[])
     std::vector<int> cap3 = {3, 3, 3, 3, 3, 3, 3, 3, 3, 3};      // cap[0],cap[1],cap[2]空いてる→cap3[0]空いてる，cap[1],cap[2], cap[3]空いてる→cap2[1]空いてる，cap[i],cap[i+1]空いてる→cap2[i]空いてる
     std::vector<int> cap4 = {4, 4, 4, 4, 4, 4, 4, 4, 4};         // cap[i],cap[i+1], cap[i+2], cap[i+3]空いてる→cap4[i]空いてる
 
+    std::vector<double> occupancy;
+
     // SeatsStay2[i] = max(SeatsStay[i], SeatsStay[i+1])
     // SeatsStay3[i] = max(SeatsStay[i], SeatsStay[i+1], SeatsStay[i+2])
     // SeatsStay4[i] = max(max(SeatsStay[i], SeatsStay[i+1]), std::max(SeatsStay[i+2],SeatsStay[i+3]))
-    int waitingCustomerNumber = 0; // 初期値を0に変更
-    std::string tmp;               // 文字列の入力に一時的に使う
+    int nextCustomIndex = 0;
+    std::vector<int> waitingCustomersIndexes;
+    std::string tmp; // 文字列の入力に一時的に使う
     std::vector<std::vector<int>> data;
     std::vector<int> cus(3); // 文字列の入力に一時的に使う
     std::string a, b, c, d;  // 文字列の入力に一時的に使う
@@ -119,10 +99,26 @@ int main(int argc, char *argv[])
     // シミュレーションの現在時刻が終了時刻よりも小さければ時刻を1ずつ進めながら繰り返す
     while (timeMinutes < endTime)
     {
+        int usedcnt = 0;
+        for (int i = 0; i < (int)SeatsStay1.size(); i++)
+        {
+            if (SeatsStay1.at(i) > 0)
+            {
+                usedcnt++;
+            }
+        }
+        occupancy.push_back((double)usedcnt / SeatsStay1.size());
         // 顧客リストの先頭の顧客の到着時刻が現在の時刻以前だった場合、すでに到着しているとみなして顧客の割当てを行う
         // std::cout << waitingCustomerNumber << ":" << data.at(waitingCustomerNumber).at(0) << ":" << timeMinutes << std::endl;
-        while (waitingCustomerNumber < (int)data.size() && data.at(waitingCustomerNumber).at(0) <= timeMinutes)
+        while (nextCustomIndex < (int)data.size() && data.at(nextCustomIndex).at(0) <= timeMinutes)
         {
+            waitingCustomersIndexes.push_back(nextCustomIndex);
+            nextCustomIndex++;
+        }
+
+        for (int TargetCustomerIndex : waitingCustomersIndexes)
+        {
+
             for (int i = 0; i < (int)SeatsStay2.size(); ++i)
             {
                 SeatsStay2[i] = std::max(SeatsStay1[i], SeatsStay1[i + 1]);
@@ -136,22 +132,23 @@ int main(int argc, char *argv[])
                 SeatsStay4[i] = std::max(std::max(SeatsStay1[i], SeatsStay1[i + 1]), std::max(SeatsStay1[i + 2], SeatsStay1[i + 3]));
             }
 
-            // 条件を変更
-            std::cout << waitingCustomerNumber << ":" << data.at(waitingCustomerNumber).at(0) << ":" << data.at(waitingCustomerNumber).at(1) << ":" << data.at(waitingCustomerNumber).at(2) << std::endl;
-
             // 客の滞在時間をSeatsStayに入れる
-            if (siro(data.at(waitingCustomerNumber).at(1), data.at(waitingCustomerNumber).at(2), SeatsStay1, cap))
+            if (fifo(data.at(TargetCustomerIndex).at(1), data.at(TargetCustomerIndex).at(2), SeatsStay1, cap))
             {
+                // イテレータを取得
+                std::vector<int>::iterator it = vec.begin() + index_to_remove;
+
+                // erase() で要素を削除
+                vec.erase(it);
                 // 現在時刻と到着時刻の差が待ち時間になるのでそれを後ろに追加する
-                data.at(waitingCustomerNumber).push_back(timeMinutes - data.at(waitingCustomerNumber).at(0)); // 修正: at(0) を at(1) に変更
-                waitingCustomerNumber++;                                                                      // 待ち顧客の先頭を次に進める
-                if (waitingCustomerNumber >= (int)data.size())                                                // 最後まで行ったらマイナスにして顧客を案内しきったことを示す
+                data.at(TargetCustomerIndex).push_back(timeMinutes - data.at(TargetCustomerIndex).at(0)); // 修正: at(0) を at(1) に変更                                                                      // 待ち顧客の先頭を次に進める
+                if (TargetCustomerIndex >= (int)data.size())                                              // 最後まで行ったらマイナスにして顧客を案内しきったことを示す
                 {
                     // waitingCustomerNumber = -1;
                     break;
                 }
             }
-            else if (siro(data.at(waitingCustomerNumber).at(1), data.at(waitingCustomerNumber).at(2), SeatsStay2, cap2) && data.at(waitingCustomerNumber).at(2) == 2)
+            else if (fifo(data.at(TargetCustomerIndex).at(1), data.at(TargetCustomerIndex).at(2), SeatsStay2, cap2) && data.at(TargetCustomerIndex).at(2) == 2)
             {
                 // 2席占有されるので反映する
                 for (int i = 0; i < (int)SeatsStay2.size(); ++i)
@@ -165,15 +162,14 @@ int main(int argc, char *argv[])
                 }
                 std::cout << std::endl;
                 // 現在時刻と到着時刻の差が待ち時間になるのでそれを後ろに追加する
-                data.at(waitingCustomerNumber).push_back(timeMinutes - data.at(waitingCustomerNumber).at(0));
-                waitingCustomerNumber++;                       // 待ち顧客の先頭を次に進める
-                if (waitingCustomerNumber >= (int)data.size()) // 最後まで行ったらマイナスにして顧客を案内しきったことを示す
+                data.at(TargetCustomerIndex).push_back(timeMinutes - data.at(TargetCustomerIndex).at(0));
+                if (TargetCustomerIndex >= (int)data.size()) // 最後まで行ったらマイナスにして顧客を案内しきったことを示す
                 {
                     // waitingCustomerNumber = -1;
                     break;
                 }
             }
-            else if (siro(data.at(waitingCustomerNumber).at(1), data.at(waitingCustomerNumber).at(2), SeatsStay3, cap3) && data.at(waitingCustomerNumber).at(2) == 3)
+            else if (fifo(data.at(TargetCustomerIndex).at(1), data.at(TargetCustomerIndex).at(2), SeatsStay3, cap3) && data.at(TargetCustomerIndex).at(2) == 3)
             {
                 for (int i = 0; i < (int)SeatsStay3.size(); ++i)
                 {
@@ -185,15 +181,14 @@ int main(int argc, char *argv[])
                     }
                 }
                 // 現在時刻と到着時刻の差が待ち時間になるのでそれを後ろに追加する
-                data.at(waitingCustomerNumber).push_back(timeMinutes - data.at(waitingCustomerNumber).at(0)); // 修正: at(0) を at(1) に変更
-                waitingCustomerNumber++;                                                                      // 待ち顧客の先頭を次に進める
-                if (waitingCustomerNumber >= (int)data.size())                                                // 最後まで行ったらマイナスにして顧客を案内しきったことを示す
+                data.at(TargetCustomerIndex).push_back(timeMinutes - data.at(TargetCustomerIndex).at(0)); // 修正: at(0) を at(1) に変更
+                if (TargetCustomerIndex >= (int)data.size())                                              // 最後まで行ったらマイナスにして顧客を案内しきったことを示す
                 {
                     // waitingCustomerNumber = -1;
                     break;
                 }
             }
-            else if (siro(data.at(waitingCustomerNumber).at(1), data.at(waitingCustomerNumber).at(2), SeatsStay4, cap4) && data.at(waitingCustomerNumber).at(2) == 4)
+            else if (fifo(data.at(TargetCustomerIndex).at(1), data.at(TargetCustomerIndex).at(2), SeatsStay4, cap4) && data.at(TargetCustomerIndex).at(2) == 4)
             {
                 for (int i = 0; i < (int)SeatsStay4.size(); ++i)
                 {
@@ -206,9 +201,8 @@ int main(int argc, char *argv[])
                     }
                 }
                 // 現在時刻と到着時刻の差が待ち時間になるのでそれを後ろに追加する
-                data.at(waitingCustomerNumber).push_back(timeMinutes - data.at(waitingCustomerNumber).at(0)); // 修正: at(0) を at(1) に変更
-                waitingCustomerNumber++;                                                                      // 待ち顧客の先頭を次に進める
-                if (waitingCustomerNumber >= (int)data.size())                                                // 最後まで行ったらマイナスにして顧客を案内しきったことを示す
+                data.at(TargetCustomerIndex).push_back(timeMinutes - data.at(TargetCustomerIndex).at(0)); // 修正: at(0) を at(1) に変更                                                                   // 待ち顧客の先頭を次に進める
+                if (TargetCustomerIndex >= (int)data.size())                                              // 最後まで行ったらマイナスにして顧客を案内しきったことを示す
                 {
                     // waitingCustomerNumber = -1;
                     break;
@@ -228,7 +222,6 @@ int main(int argc, char *argv[])
         minusTime(SeatsStay4);
 
         // 席の待ち時間の状況テスト表示コード
-        std::cout << "time=" << timeMinutes << ":" << "待ち客=" << waitingCustomerNumber << ":";
         for (int i = 0; i < (int)SeatsStay1.size(); i++)
         {
             std::cout << "(" << i << ")" << SeatsStay1.at(i);
@@ -272,4 +265,37 @@ int main(int argc, char *argv[])
     }
     outputFile.close();
     std::cout << "待ち時間は" << outputFilename << "に書き込みました" << std::endl;
+
+    std::string fn = "./result/rslt.txt";
+    std::ofstream outputFile2(fn);
+    if (!outputFile2.is_open())
+    {
+        std::cerr << "出力ファイルを開けませんでした。" << std::endl;
+        return 1;
+    }
+
+    // std::cout << data.at(0).size() << std::endl;
+    for (int i = 0; i < (int)data.size(); i++)
+    {
+        for (int j = 0; j < (int)data.at(i).at(2); j++)
+        {
+            outputFile2 << i + 1 << ' ' << data.at(i).at(0) << ' ' << data.at(i).at(3) << std::endl;
+        }
+    }
+    outputFile2.close();
+
+    std::string fn2 = "./result/occupancy.txt";
+    std::ofstream outputFile3(fn2);
+    if (!outputFile3.is_open())
+    {
+        std::cerr << "出力ファイルを開けませんでした。" << std::endl;
+        return 1;
+    }
+
+    // std::cout << data.at(0).size() << std::endl;
+    for (double tmp : occupancy)
+    {
+        outputFile3 << tmp << std::endl;
+    }
+    outputFile3.close();
 }
