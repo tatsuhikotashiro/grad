@@ -5,6 +5,7 @@
 #include <sstream>
 #include <random>
 #include <string>
+#include <iomanip>
 
 struct Customer
 {
@@ -57,11 +58,13 @@ void update_table_status(int target_idx, std::vector<CombineTableInfo> combine_l
         // target_idx番のテーブルの残り待ち時間を元となるテーブルにコピーする
         if (table.table_idx == target_idx)
         {
+            std::cout << target_idx << std::endl;
             for (int i = 0; i < table.combined_size; i++)
             {
+                std::cout << table.combined_table_idx[i] << std::endl;
                 waiting_time_for_seats[table.combined_table_idx[i]] = waiting_time_for_seats[target_idx];
             }
-            break;
+            return;
         }
         // target_idx番のテーブルを使ってテーブルを組み合わせる場合は組み合わせ元の
         // テーブルの残り待ち時間の最大値を組み合わせ先のテーブルの待ち時間にコピーする
@@ -70,6 +73,7 @@ void update_table_status(int target_idx, std::vector<CombineTableInfo> combine_l
             if (table.combined_table_idx[j] == target_idx)
             {
                 waiting_time_for_seats[target_idx] = max_waiting_time(table.combined_table_idx, table.combined_size, waiting_time_for_seats);
+
             }
         }
     }
@@ -114,7 +118,7 @@ bool simple_assign(int current_time, std::vector<int> &indexes_of_waiting_custom
             // std::cout << customers[target].waiting_time<< std::endl;
 
             indexes_of_waiting_customers.erase(std::remove(indexes_of_waiting_customers.begin(), indexes_of_waiting_customers.end(), target), indexes_of_waiting_customers.end());
-            update_table_status(target, combine_list, waiting_time_for_seats);
+            update_table_status(i, combine_list, waiting_time_for_seats);
             return true;
         }
     }
@@ -258,7 +262,7 @@ int main(int argc, char *argv[])
             }
             for (int i = 0; i < table_num; i++)
             {
-                std::cout << waiting_time_for_seats[i] << " ";
+                std::cout << std::setw(3)<< waiting_time_for_seats[i];
             }
             std::cout << std::endl;
         }

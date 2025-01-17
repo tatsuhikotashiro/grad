@@ -111,12 +111,14 @@ int main(int argc, char *argv[])
     while (timeMinutes < endTime)
     {
         int usedcnt = 0;
-        for(int i=0;i<(int)SeatsStay1.size();i++){
-            if(SeatsStay1.at(i)>0){
+        for (int i = 0; i < (int)SeatsStay1.size(); i++)
+        {
+            if (SeatsStay1.at(i) > 0)
+            {
                 usedcnt++;
             }
         }
-        occupancy.push_back((double)usedcnt/SeatsStay1.size());
+        occupancy.push_back((double)usedcnt / SeatsStay1.size());
         // 顧客リストの先頭の顧客の到着時刻が現在の時刻以前だった場合、すでに到着しているとみなして顧客の割当てを行う
         // std::cout << waitingCustomerNumber << ":" << data.at(waitingCustomerNumber).at(0) << ":" << timeMinutes << std::endl;
         while (waitingCustomerNumber < (int)data.size() && data.at(waitingCustomerNumber).at(0) <= timeMinutes)
@@ -143,7 +145,14 @@ int main(int argc, char *argv[])
                 // 現在時刻と到着時刻の差が待ち時間になるのでそれを後ろに追加する
                 data.at(waitingCustomerNumber).push_back(timeMinutes - data.at(waitingCustomerNumber).at(0)); // 修正: at(0) を at(1) に変更
                 waitingCustomerNumber++;                                                                      // 待ち顧客の先頭を次に進める
-                if (waitingCustomerNumber >= (int)data.size())                                                // 最後まで行ったらマイナスにして顧客を案内しきったことを示す
+
+                for (int i = 0; i < table_num; i++)
+                {
+                    std::cout << waiting_time_for_seats[i] << " ";
+                }
+                std::cout << std::endl;
+
+                if (waitingCustomerNumber >= (int)data.size()) // 最後まで行ったらマイナスにして顧客を案内しきったことを示す
                 {
                     // waitingCustomerNumber = -1;
                     break;
@@ -284,7 +293,7 @@ int main(int argc, char *argv[])
     {
         for (int j = 0; j < (int)data.at(i).at(2); j++)
         {
-            outputFile2 << i+1 << ' ' << data.at(i).at(0) << ' ' << data.at(i).at(3) << std::endl;
+            outputFile2 << i + 1 << ' ' << data.at(i).at(0) << ' ' << data.at(i).at(3) << std::endl;
         }
     }
     outputFile2.close();
