@@ -6,63 +6,176 @@
 #include <random>
 #include <string>
 
-// 滞在時刻と席ごとにあとどれだけ顧客が座っているのかを受け取って空いている席に割り当てる
-// 入力: 待っている顧客の滞在時間, 各座席の顧客の残り滞在時間
-bool fifo(int stayTime, int group, std::vector<int> &customerSeatsStayTime, std::vector<int> &cap)
+struct Customer
 {
-    for (int i = 0; i < (int)customerSeatsStayTime.size(); i++)
+    int arrival_time;
+    int service_time;
+    int group_size;
+    int waiting_time = -1;
+};
+
+struct CombineTableInfo
+{
+    int table_idx;
+    int combined_size;
+    int combined_table_idx[4] = {-1, -1, -1, -1};
+    CombineTableInfo(int a, int b, int c[4]) : table_idx(a), combined_size(b)
     {
-        if (customerSeatsStayTime.at(i) == 0 && cap.at(i) >= group)
+        for (int i = 0; i < 4; ++i)
         {
-            customerSeatsStayTime.at(i) = stayTime;
+            combined_table_idx[i] = c[i];
+        }
+    }
+};
+
+int max_waiting_time(int idx_list[], int idx_size, int waiting_time_for_seats[])
+{
+    int rslt = -1;
+    for (int i = 0; i < idx_size; i++)
+    {
+        if (rslt <= waiting_time_for_seats[idx_list[i]])
+        {
+            rslt = waiting_time_for_seats[idx_list[i]];
+        }
+    }
+    if (rslt < 0)
+    {
+        throw std::invalid_argument("値が負です");
+    }
+    return rslt;
+}
+
+// target_idx番のテーブルが組み合わせでできたものならば，
+// target_idx番のテーブルの残り待ち時間を元となるテーブルにコピーする
+// target_idx番のテーブルを使ってテーブルを組み合わせる場合は組み合わせ元の
+// テーブルの残り待ち時間の最大値を組み合わせ先のテーブルの待ち時間にコピーする
+void update_table_status(int target_idx, std::vector<CombineTableInfo> combine_list, int waiting_time_for_seats[])
+{
+    for (CombineTableInfo table : combine_list)
+    {
+        // target_idx番のテーブルが組み合わせでできたものならば，
+        // target_idx番のテーブルの残り待ち時間を元となるテーブルにコピーする
+        if (table.table_idx == target_idx)
+        {
+            for (int i = 0; i < table.combined_size; i++)
+            {
+                waiting_time_for_seats[table.combined_table_idx[i]] = waiting_time_for_seats[target_idx];
+            }
+            break;
+        }
+        // target_idx番のテーブルを使ってテーブルを組み合わせる場合は組み合わせ元の
+        // テーブルの残り待ち時間の最大値を組み合わせ先のテーブルの待ち時間にコピーする
+        for (int j = 0; j < table.combined_size; j++)
+        {
+            if (table.combined_table_idx[j] == target_idx)
+            {
+                waiting_time_for_seats[target_idx] = max_waiting_time(table.combined_table_idx, table.combined_size, waiting_time_for_seats);
+            }
+        }
+    }
+}
+
+int fifo(std::vector<int> &indexes_of_waiting_customers)
+{
+    for (int rst : indexes_of_waiting_customers)
+    {
+        return rst; // 先頭を即座に返す
+    }
+    return -1; // 並んでいる客がいなければ負の値を返す
+}
+
+int method_1(std::vector<int> &indexes_of_waiting_customers, std::vector<Customer> &customers, int waiting_time_for_seats[], int seats_capacity[], int size)
+{
+    for (int idx : indexes_of_waiting_customers)
+    {
+        std::cout << "idx=" << idx << std::endl;
+        for (int i = 0; i < size; i++)
+        {
+            if (waiting_time_for_seats[i] == 0 && seats_capacity[i] >= customers[idx].group_size)
+            {
+                return idx;
+            }
+        }
+    }
+    return -1; // 選べなければ負の値を返す
+}
+
+bool simple_assign(int current_time, std::vector<int> &indexes_of_waiting_customers, int target, std::vector<Customer> &customers, int waiting_time_for_seats[], int seats_capacity[], int size, std::vector<CombineTableInfo> combine_list)
+{
+    // std::cout << target << "の割り当てを試みています\n"<< std::endl;
+    for (int i = 0; i < size; i++)
+    {
+
+        if (waiting_time_for_seats[i] == 0 && customers[target].group_size <= seats_capacity[i])
+        {
+            waiting_time_for_seats[i] = customers[target].service_time;
+            customers[target].waiting_time = current_time - customers[target].arrival_time;
+
+            // std::cout << customers[target].waiting_time<< std::endl;
+
+            indexes_of_waiting_customers.erase(std::remove(indexes_of_waiting_customers.begin(), indexes_of_waiting_customers.end(), target), indexes_of_waiting_customers.end());
+            update_table_status(target, combine_list, waiting_time_for_seats);
             return true;
         }
     }
     return false;
 }
 
-void minusTime(std::vector<int> &SeatsStay)
+void minus_time(int waiting_time_for_seats[], int size)
 {
-    for (auto &&stayTime : SeatsStay)
+    for (int i = 0; i < size; i++)
     {
-        if (stayTime > 0)
+        if (waiting_time_for_seats[i] > 0)
         {
-            stayTime--;
+            waiting_time_for_seats[i]--;
         }
     }
 }
 
 int main(int argc, char *argv[])
 {
-    std::vector<int> SeatsStay1(12);
-    // for (int i : SeatsStay1){
-    //     std::cout << i << std::endl;
-    // }
-    std::vector<int> SeatsStay2(11);                             // 2人隣接してやるとき
-    std::vector<int> SeatsStay3(10);                             // 3人隣接してやるとき
-    std::vector<int> SeatsStay4(9);                              // 3人隣接してやるとき
-    std::vector<int> cap = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}; // 客数
-    std::vector<int> cap2 = {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2};   // cap[0],cap[1]空いてる→cap2[0]空いてる，cap[1],cap[2]空いてる→cap2[1]空いてる，cap[i],cap[i+1]空いてる→cap2[i]空いてる
-    std::vector<int> cap3 = {3, 3, 3, 3, 3, 3, 3, 3, 3, 3};      // cap[0],cap[1],cap[2]空いてる→cap3[0]空いてる，cap[1],cap[2], cap[3]空いてる→cap2[1]空いてる，cap[i],cap[i+1]空いてる→cap2[i]空いてる
-    std::vector<int> cap4 = {4, 4, 4, 4, 4, 4, 4, 4, 4};         // cap[i],cap[i+1], cap[i+2], cap[i+3]空いてる→cap4[i]空いてる
+    // カウンター式
+    int seats_capacity[42] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4};
+    int waiting_time_for_seats[42] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    int table_num = 42;
+    std::vector<CombineTableInfo> combine_list;
+    for (int i = 0; i < 11; ++i)
+    {
+        int initial_indices[4] = {i, i+1, -1, -1};
+        CombineTableInfo info2(i, 2, initial_indices);
+        combine_list.push_back(info2);
+    }
+    for (int i = 0; i < 10; ++i)
+    {
+        int initial_indices[4] = {i, i+1, i+2, -1};
+        CombineTableInfo info3(i, 3, initial_indices);
+        combine_list.push_back(info3);
+    }
+    for (int i = 0; i < 9; ++i)
+    {
+        int initial_indices[4] = {i, i+1, i+2, i+3};
+        CombineTableInfo info4(i, 4, initial_indices);
+        combine_list.push_back(info4);
+    }
 
-    std::vector<double> occupancy;
+    // int seats_capacity[28] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4};
+    // int waiting_time_for_seats[28] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    // int table_num = 28;
+    // int seats_capacity[3] = {1, 2, 4};
+    // int waiting_time_for_seats[3] = {0, 0, 0};
+    // int table_num = 3;
 
-    // SeatsStay2[i] = max(SeatsStay[i], SeatsStay[i+1])
-    // SeatsStay3[i] = max(SeatsStay[i], SeatsStay[i+1], SeatsStay[i+2])
-    // SeatsStay4[i] = max(max(SeatsStay[i], SeatsStay[i+1]), std::max(SeatsStay[i+2],SeatsStay[i+3]))
-    int nextCustomIndex = 0;
-    std::vector<int> waitingCustomersIndexes;
-    std::string tmp; // 文字列の入力に一時的に使う
-    std::vector<std::vector<int>> data;
-    std::vector<int> cus(3); // 文字列の入力に一時的に使う
-    std::string a, b, c, d;  // 文字列の入力に一時的に使う
+    std::vector<int> indexes_of_available_seats;
+    std::vector<int> indexes_of_waiting_customers;
+    std::vector<Customer> customers;
 
-    // シミュレーション終了時刻（分）
-    // 11時から24時までだったら13時間のためそれを分に直して記述する
-    int endTime = 1600;
+    std::string tmp;     // 文字列の入力に一時的に使う
+    std::string a, b, c; // 文字列の入力に一時的に使う
+
     // シミュレーション中に使用する時刻を保存する変数（分）
-    int timeMinutes = 0; // シミュレーション開始時刻は11時とする
+    int current_time = 0; // シミュレーション開始時刻は11時とする
+    // シミュレーション終了時刻（分）
+    int end_time = 1600;
 
     // コマンドライン引数のチェック
     if (argc != 2)
@@ -84,170 +197,77 @@ int main(int argc, char *argv[])
     // getline()で1行ずつ読み込む
     while (getline(ifs, tmp))
     {
+        Customer cus;
         std::stringstream ss;
         ss << tmp;
         ss >> a >> b >> c;
-        cus.at(0) = std::__cxx11::stoi(a); // 到着
-        cus.at(1) = std::__cxx11::stoi(b); // 滞在
-        cus.at(2) = std::__cxx11::stoi(c); // 人数
-        data.push_back(cus);
+        cus.arrival_time = std::__cxx11::stoi(a); // 到着
+        cus.service_time = std::__cxx11::stoi(b); // 滞在
+        cus.group_size = std::__cxx11::stoi(c);   // 人数
+        customers.push_back(cus);
     }
     // ファイルを閉じる
     ifs.close();
-    // std::cout << data.at(0).size() << std::endl;
 
     // シミュレーションの現在時刻が終了時刻よりも小さければ時刻を1ずつ進めながら繰り返す
-    while (timeMinutes < endTime)
+    int next_index = 0;
+    while (current_time < end_time)
     {
-        int usedcnt = 0;
-        for (int i = 0; i < (int)SeatsStay1.size(); i++)
+        // if (next_index < 20)
+        // {
+        //         std::cout <<current_time << ":";
+        //     for (int i = 0; i < 12; i++)
+        //     {
+        //         std::cout << waiting_time_for_seats[i] << ' ';
+        //     }
+        //     std::cout << std::endl;
+        // }
+        // 現在到着して待っている顧客のリストの更新
+        while (next_index < (int)customers.size() && customers[next_index].arrival_time <= current_time)
         {
-            if (SeatsStay1.at(i) > 0)
-            {
-                usedcnt++;
-            }
+            // std::cout << "到着リストに追加しましたarrival=" << customers[next_index].arrival_time << std::endl;
+            indexes_of_waiting_customers.push_back(next_index);
+            next_index++;
         }
-        occupancy.push_back((double)usedcnt / SeatsStay1.size());
-        // 顧客リストの先頭の顧客の到着時刻が現在の時刻以前だった場合、すでに到着しているとみなして顧客の割当てを行う
-        // std::cout << waitingCustomerNumber << ":" << data.at(waitingCustomerNumber).at(0) << ":" << timeMinutes << std::endl;
-        while (nextCustomIndex < (int)data.size() && data.at(nextCustomIndex).at(0) <= timeMinutes)
+        // std::cout << "待ち顧客インデックスのリスト: ";
+        // for(int nom: indexes_of_waiting_customers){
+        //     std::cout << nom << " ";
+        // }
+        // std::cout << '\n';
+
+        bool flag = true; // 割当てできなくなるまでtrue
+
+        while (flag)
         {
-            waitingCustomersIndexes.push_back(nextCustomIndex);
-            nextCustomIndex++;
-        }
+            // 割当てを試みる客のindexの選択
 
-        for (int TargetCustomerIndex : waitingCustomersIndexes)
-        {
+            int selected_index = fifo(indexes_of_waiting_customers);
 
-            for (int i = 0; i < (int)SeatsStay2.size(); ++i)
+            // int selected_index = method_1(indexes_of_waiting_customers, customers, waiting_time_for_seats, seats_capacity, table_num);
+            // std::cout << selected_index << "が選択されています\n";
+            if (selected_index < 0)
+                break;
+            // 割当て
+            if (selected_index >= 0 && simple_assign(current_time, indexes_of_waiting_customers, selected_index, customers, waiting_time_for_seats, seats_capacity, table_num, combine_list))
             {
-                SeatsStay2[i] = std::max(SeatsStay1[i], SeatsStay1[i + 1]);
-            }
-            for (int i = 0; i < (int)SeatsStay3.size(); ++i)
-            {
-                SeatsStay3[i] = std::max(std::max(SeatsStay1[i], SeatsStay1[i + 1]), SeatsStay1[i + 2]);
-            }
-            for (int i = 0; i < (int)SeatsStay4.size(); ++i)
-            {
-                SeatsStay4[i] = std::max(std::max(SeatsStay1[i], SeatsStay1[i + 1]), std::max(SeatsStay1[i + 2], SeatsStay1[i + 3]));
-            }
-
-            // 客の滞在時間をSeatsStayに入れる
-            if (fifo(data.at(TargetCustomerIndex).at(1), data.at(TargetCustomerIndex).at(2), SeatsStay1, cap))
-            {
-                // イテレータを取得
-                std::vector<int>::iterator it = vec.begin() + index_to_remove;
-
-                // erase() で要素を削除
-                vec.erase(it);
-                // 現在時刻と到着時刻の差が待ち時間になるのでそれを後ろに追加する
-                data.at(TargetCustomerIndex).push_back(timeMinutes - data.at(TargetCustomerIndex).at(0)); // 修正: at(0) を at(1) に変更                                                                      // 待ち顧客の先頭を次に進める
-                if (TargetCustomerIndex >= (int)data.size())                                              // 最後まで行ったらマイナスにして顧客を案内しきったことを示す
-                {
-                    // waitingCustomerNumber = -1;
-                    break;
-                }
-            }
-            else if (fifo(data.at(TargetCustomerIndex).at(1), data.at(TargetCustomerIndex).at(2), SeatsStay2, cap2) && data.at(TargetCustomerIndex).at(2) == 2)
-            {
-                // 2席占有されるので反映する
-                for (int i = 0; i < (int)SeatsStay2.size(); ++i)
-                {
-                    std::cout << SeatsStay2[i] << ", ";
-                    if (SeatsStay2[i] > 0)
-                    {
-                        SeatsStay1[i] = SeatsStay2[i];
-                        SeatsStay1[i + 1] = SeatsStay2[i];
-                    }
-                }
-                std::cout << std::endl;
-                // 現在時刻と到着時刻の差が待ち時間になるのでそれを後ろに追加する
-                data.at(TargetCustomerIndex).push_back(timeMinutes - data.at(TargetCustomerIndex).at(0));
-                if (TargetCustomerIndex >= (int)data.size()) // 最後まで行ったらマイナスにして顧客を案内しきったことを示す
-                {
-                    // waitingCustomerNumber = -1;
-                    break;
-                }
-            }
-            else if (fifo(data.at(TargetCustomerIndex).at(1), data.at(TargetCustomerIndex).at(2), SeatsStay3, cap3) && data.at(TargetCustomerIndex).at(2) == 3)
-            {
-                for (int i = 0; i < (int)SeatsStay3.size(); ++i)
-                {
-                    if (SeatsStay3[i] > 0)
-                    {
-                        SeatsStay1[i] = SeatsStay3[i];
-                        SeatsStay1[i + 1] = SeatsStay3[i];
-                        SeatsStay1[i + 2] = SeatsStay3[i];
-                    }
-                }
-                // 現在時刻と到着時刻の差が待ち時間になるのでそれを後ろに追加する
-                data.at(TargetCustomerIndex).push_back(timeMinutes - data.at(TargetCustomerIndex).at(0)); // 修正: at(0) を at(1) に変更
-                if (TargetCustomerIndex >= (int)data.size())                                              // 最後まで行ったらマイナスにして顧客を案内しきったことを示す
-                {
-                    // waitingCustomerNumber = -1;
-                    break;
-                }
-            }
-            else if (fifo(data.at(TargetCustomerIndex).at(1), data.at(TargetCustomerIndex).at(2), SeatsStay4, cap4) && data.at(TargetCustomerIndex).at(2) == 4)
-            {
-                for (int i = 0; i < (int)SeatsStay4.size(); ++i)
-                {
-                    if (SeatsStay4[i] > 0)
-                    {
-                        SeatsStay1[i] = SeatsStay4[i];
-                        SeatsStay1[i + 1] = SeatsStay4[i];
-                        SeatsStay1[i + 2] = SeatsStay4[i];
-                        SeatsStay1[i + 3] = SeatsStay4[i];
-                    }
-                }
-                // 現在時刻と到着時刻の差が待ち時間になるのでそれを後ろに追加する
-                data.at(TargetCustomerIndex).push_back(timeMinutes - data.at(TargetCustomerIndex).at(0)); // 修正: at(0) を at(1) に変更                                                                   // 待ち顧客の先頭を次に進める
-                if (TargetCustomerIndex >= (int)data.size())                                              // 最後まで行ったらマイナスにして顧客を案内しきったことを示す
-                {
-                    // waitingCustomerNumber = -1;
-                    break;
-                }
+                flag = true;
             }
             else
             {
-                break;
+                flag = false;
             }
+            for (int i = 0; i < table_num; i++)
+            {
+                std::cout << waiting_time_for_seats[i] << " ";
+            }
+            std::cout << std::endl;
         }
         // 全体の時間を一秒進める
-        timeMinutes++;
+        current_time++;
         // 各座席の残り滞在時間を一秒減らす
-        minusTime(SeatsStay1);
-        minusTime(SeatsStay2);
-        minusTime(SeatsStay3);
-        minusTime(SeatsStay4);
-
-        // 席の待ち時間の状況テスト表示コード
-        for (int i = 0; i < (int)SeatsStay1.size(); i++)
-        {
-            std::cout << "(" << i << ")" << SeatsStay1.at(i);
-            (SeatsStay1.at(i) > 9) ? std::cout << " " : std::cout << "  ";
-        }
-        std::cout << std::endl;
-        for (int i = 0; i < (int)SeatsStay2.size(); i++)
-        {
-            std::cout << "(" << i << "-2)" << SeatsStay2.at(i);
-            (SeatsStay2.at(i) > 9) ? std::cout << " " : std::cout << "  ";
-        }
-        std::cout << std::endl;
-        for (int i = 0; i < (int)SeatsStay3.size(); i++)
-        {
-            std::cout << "(" << i << "-3)" << SeatsStay3.at(i);
-            (SeatsStay3.at(i) > 9) ? std::cout << " " : std::cout << "  ";
-        }
-        std::cout << std::endl;
-        for (int i = 0; i < (int)SeatsStay4.size(); i++)
-        {
-            std::cout << "(" << i << "-4)" << SeatsStay4.at(i);
-            (SeatsStay4.at(i) > 9) ? std::cout << " " : std::cout << "  ";
-        }
-        std::cout << std::endl;
+        minus_time(waiting_time_for_seats, table_num);
     }
-    std::string outputFilename = "waitingTime.txt";
+    std::string outputFilename = "waiting_time.txt";
     std::ofstream outputFile(outputFilename);
     if (!outputFile.is_open())
     {
@@ -255,47 +275,22 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    // std::cout << data.at(0).size() << std::endl;
-    for (int i = 0; i < (int)data.size(); i++)
+    for (int i = 0; i < (int)customers.size(); i++)
     {
-        for (int j = 0; j < (int)data.at(i).at(2); j++)
+        for (int j = 0; j < customers[i].group_size; j++)
         {
-            outputFile << data.at(i).at(3) << std::endl;
+            // std::cout << "書き込み" << std::endl;
+            outputFile << customers[i].waiting_time << std::endl;
+            // std::cout << "書き込み終わり" << std::endl;
         }
     }
+
+    // // グループごとに記述する場合
+    // for (int i = 0; i < (int)customers.size(); i++)
+    // {
+    //     outputFile << customers[i].waiting_time << std::endl;
+    // }
+
     outputFile.close();
     std::cout << "待ち時間は" << outputFilename << "に書き込みました" << std::endl;
-
-    std::string fn = "./result/rslt.txt";
-    std::ofstream outputFile2(fn);
-    if (!outputFile2.is_open())
-    {
-        std::cerr << "出力ファイルを開けませんでした。" << std::endl;
-        return 1;
-    }
-
-    // std::cout << data.at(0).size() << std::endl;
-    for (int i = 0; i < (int)data.size(); i++)
-    {
-        for (int j = 0; j < (int)data.at(i).at(2); j++)
-        {
-            outputFile2 << i + 1 << ' ' << data.at(i).at(0) << ' ' << data.at(i).at(3) << std::endl;
-        }
-    }
-    outputFile2.close();
-
-    std::string fn2 = "./result/occupancy.txt";
-    std::ofstream outputFile3(fn2);
-    if (!outputFile3.is_open())
-    {
-        std::cerr << "出力ファイルを開けませんでした。" << std::endl;
-        return 1;
-    }
-
-    // std::cout << data.at(0).size() << std::endl;
-    for (double tmp : occupancy)
-    {
-        outputFile3 << tmp << std::endl;
-    }
-    outputFile3.close();
 }

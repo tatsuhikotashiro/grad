@@ -1,0 +1,1483 @@
+seisei.cpp: In function ‘int combineTables(int, int, std::set<int>&)’:
+seisei.cpp:63:21: error: no matching function for call to ‘get(std::tuple<int, int, int>&)’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:223:5: note: candidate: ‘template<long unsigned int _Int, class _Tp1, class _Tp2> constexpr typename std::tuple_element<_Int, std::pair<_Tp1, _Tp2> >::type& std::get(std::pair<_Tp1, _Tp2>&)’
+  223 |     get(pair<_Tp1, _Tp2>& __in) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:223:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::pair<_Tp1, _Tp2>’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:228:5: note: candidate: ‘template<long unsigned int _Int, class _Tp1, class _Tp2> constexpr typename std::tuple_element<_Int, std::pair<_Tp1, _Tp2> >::type&& std::get(std::pair<_Tp1, _Tp2>&&)’
+  228 |     get(pair<_Tp1, _Tp2>&& __in) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:228:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::pair<_Tp1, _Tp2>’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:233:5: note: candidate: ‘template<long unsigned int _Int, class _Tp1, class _Tp2> constexpr const typename std::tuple_element<_Int, std::pair<_Tp1, _Tp2> >::type& std::get(const std::pair<_Tp1, _Tp2>&)’
+  233 |     get(const pair<_Tp1, _Tp2>& __in) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:233:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::pair<_Tp1, _Tp2>’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:238:5: note: candidate: ‘template<long unsigned int _Int, class _Tp1, class _Tp2> constexpr const typename std::tuple_element<_Int, std::pair<_Tp1, _Tp2> >::type&& std::get(const std::pair<_Tp1, _Tp2>&&)’
+  238 |     get(const pair<_Tp1, _Tp2>&& __in) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:238:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::pair<_Tp1, _Tp2>’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:247:5: note: candidate: ‘template<class _Tp, class _Up> constexpr _Tp& std::get(std::pair<_T1, _T2>&)’
+  247 |     get(pair<_Tp, _Up>& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:247:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::pair<_T1, _T2>’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:252:5: note: candidate: ‘template<class _Tp, class _Up> constexpr const _Tp& std::get(const std::pair<_T1, _T2>&)’
+  252 |     get(const pair<_Tp, _Up>& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:252:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::pair<_T1, _T2>’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:257:5: note: candidate: ‘template<class _Tp, class _Up> constexpr _Tp&& std::get(std::pair<_T1, _T2>&&)’
+  257 |     get(pair<_Tp, _Up>&& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:257:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::pair<_T1, _T2>’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:262:5: note: candidate: ‘template<class _Tp, class _Up> constexpr const _Tp&& std::get(const std::pair<_T1, _T2>&&)’
+  262 |     get(const pair<_Tp, _Up>&& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:262:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::pair<_T1, _T2>’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:267:5: note: candidate: ‘template<class _Tp, class _Up> constexpr _Tp& std::get(std::pair<_Up, _Tp>&)’
+  267 |     get(pair<_Up, _Tp>& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:267:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::pair<_Up, _Tp>’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:272:5: note: candidate: ‘template<class _Tp, class _Up> constexpr const _Tp& std::get(const std::pair<_Up, _Tp>&)’
+  272 |     get(const pair<_Up, _Tp>& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:272:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::pair<_Up, _Tp>’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:277:5: note: candidate: ‘template<class _Tp, class _Up> constexpr _Tp&& std::get(std::pair<_Up, _Tp>&&)’
+  277 |     get(pair<_Up, _Tp>&& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:277:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::pair<_Up, _Tp>’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:282:5: note: candidate: ‘template<class _Tp, class _Up> constexpr const _Tp&& std::get(const std::pair<_Up, _Tp>&&)’
+  282 |     get(const pair<_Up, _Tp>&& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:282:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::pair<_Up, _Tp>’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/tuple:39,
+                 from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/array:361:5: note: candidate: ‘template<long unsigned int _Int, class _Tp, long unsigned int _Nm> constexpr _Tp& std::get(std::array<_Tp, _Nm>&)’
+  361 |     get(array<_Tp, _Nm>& __arr) noexcept
+      |     ^~~
+/usr/include/c++/11/array:361:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::array<_Tp, _Nm>’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/tuple:39,
+                 from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/array:369:5: note: candidate: ‘template<long unsigned int _Int, class _Tp, long unsigned int _Nm> constexpr _Tp&& std::get(std::array<_Tp, _Nm>&&)’
+  369 |     get(array<_Tp, _Nm>&& __arr) noexcept
+      |     ^~~
+/usr/include/c++/11/array:369:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::array<_Tp, _Nm>’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/tuple:39,
+                 from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/array:377:5: note: candidate: ‘template<long unsigned int _Int, class _Tp, long unsigned int _Nm> constexpr const _Tp& std::get(const std::array<_Tp, _Nm>&)’
+  377 |     get(const array<_Tp, _Nm>& __arr) noexcept
+      |     ^~~
+/usr/include/c++/11/array:377:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::array<_Tp, _Nm>’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/tuple:39,
+                 from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/array:385:5: note: candidate: ‘template<long unsigned int _Int, class _Tp, long unsigned int _Nm> constexpr const _Tp&& std::get(const std::array<_Tp, _Nm>&&)’
+  385 |     get(const array<_Tp, _Nm>&& __arr) noexcept
+      |     ^~~
+/usr/include/c++/11/array:385:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::array<_Tp, _Nm>’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1393:5: note: candidate: ‘template<long unsigned int __i, class ... _Elements> constexpr std::__tuple_element_t<__i, std::tuple<_Args2 ...> >& std::get(std::tuple<_Args2 ...>&)’
+ 1393 |     get(tuple<_Elements...>& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1393:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:21: note:   couldn’t deduce template parameter ‘__i’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1399:5: note: candidate: ‘template<long unsigned int __i, class ... _Elements> constexpr std::__tuple_element_t<__i, std::tuple<_Args2 ...> >& std::get(const std::tuple<_Args2 ...>&)’
+ 1399 |     get(const tuple<_Elements...>& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1399:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:21: note:   couldn’t deduce template parameter ‘__i’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1405:5: note: candidate: ‘template<long unsigned int __i, class ... _Elements> constexpr std::__tuple_element_t<__i, std::tuple<_Args2 ...> >&& std::get(std::tuple<_Args2 ...>&&)’
+ 1405 |     get(tuple<_Elements...>&& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1405:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:21: note:   couldn’t deduce template parameter ‘__i’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1414:5: note: candidate: ‘template<long unsigned int __i, class ... _Elements> constexpr std::__tuple_element_t<__i, std::tuple<_Args2 ...> >&& std::get(const std::tuple<_Args2 ...>&&)’
+ 1414 |     get(const tuple<_Elements...>&& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1414:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:21: note:   couldn’t deduce template parameter ‘__i’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1449:5: note: candidate: ‘template<class _Tp, class ... _Types> constexpr _Tp& std::get(std::tuple<_Args2 ...>&)’
+ 1449 |     get(tuple<_Types...>& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1449:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:21: note:   couldn’t deduce template parameter ‘_Tp’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1460:5: note: candidate: ‘template<class _Tp, class ... _Types> constexpr _Tp&& std::get(std::tuple<_Args2 ...>&&)’
+ 1460 |     get(tuple<_Types...>&& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1460:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:21: note:   couldn’t deduce template parameter ‘_Tp’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1471:5: note: candidate: ‘template<class _Tp, class ... _Types> constexpr const _Tp& std::get(const std::tuple<_Args2 ...>&)’
+ 1471 |     get(const tuple<_Types...>& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1471:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:21: note:   couldn’t deduce template parameter ‘_Tp’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1483:5: note: candidate: ‘template<class _Tp, class ... _Types> constexpr const _Tp&& std::get(const std::tuple<_Args2 ...>&&)’
+ 1483 |     get(const tuple<_Types...>&& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1483:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:21: note:   couldn’t deduce template parameter ‘_Tp’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+seisei.cpp:63:43: error: no matching function for call to ‘get(std::tuple<int, int, int>&)’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:223:5: note: candidate: ‘template<long unsigned int _Int, class _Tp1, class _Tp2> constexpr typename std::tuple_element<_Int, std::pair<_Tp1, _Tp2> >::type& std::get(std::pair<_Tp1, _Tp2>&)’
+  223 |     get(pair<_Tp1, _Tp2>& __in) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:223:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::pair<_Tp1, _Tp2>’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:228:5: note: candidate: ‘template<long unsigned int _Int, class _Tp1, class _Tp2> constexpr typename std::tuple_element<_Int, std::pair<_Tp1, _Tp2> >::type&& std::get(std::pair<_Tp1, _Tp2>&&)’
+  228 |     get(pair<_Tp1, _Tp2>&& __in) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:228:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::pair<_Tp1, _Tp2>’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:233:5: note: candidate: ‘template<long unsigned int _Int, class _Tp1, class _Tp2> constexpr const typename std::tuple_element<_Int, std::pair<_Tp1, _Tp2> >::type& std::get(const std::pair<_Tp1, _Tp2>&)’
+  233 |     get(const pair<_Tp1, _Tp2>& __in) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:233:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::pair<_Tp1, _Tp2>’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:238:5: note: candidate: ‘template<long unsigned int _Int, class _Tp1, class _Tp2> constexpr const typename std::tuple_element<_Int, std::pair<_Tp1, _Tp2> >::type&& std::get(const std::pair<_Tp1, _Tp2>&&)’
+  238 |     get(const pair<_Tp1, _Tp2>&& __in) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:238:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::pair<_Tp1, _Tp2>’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:247:5: note: candidate: ‘template<class _Tp, class _Up> constexpr _Tp& std::get(std::pair<_T1, _T2>&)’
+  247 |     get(pair<_Tp, _Up>& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:247:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::pair<_T1, _T2>’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:252:5: note: candidate: ‘template<class _Tp, class _Up> constexpr const _Tp& std::get(const std::pair<_T1, _T2>&)’
+  252 |     get(const pair<_Tp, _Up>& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:252:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::pair<_T1, _T2>’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:257:5: note: candidate: ‘template<class _Tp, class _Up> constexpr _Tp&& std::get(std::pair<_T1, _T2>&&)’
+  257 |     get(pair<_Tp, _Up>&& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:257:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::pair<_T1, _T2>’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:262:5: note: candidate: ‘template<class _Tp, class _Up> constexpr const _Tp&& std::get(const std::pair<_T1, _T2>&&)’
+  262 |     get(const pair<_Tp, _Up>&& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:262:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::pair<_T1, _T2>’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:267:5: note: candidate: ‘template<class _Tp, class _Up> constexpr _Tp& std::get(std::pair<_Up, _Tp>&)’
+  267 |     get(pair<_Up, _Tp>& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:267:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::pair<_Up, _Tp>’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:272:5: note: candidate: ‘template<class _Tp, class _Up> constexpr const _Tp& std::get(const std::pair<_Up, _Tp>&)’
+  272 |     get(const pair<_Up, _Tp>& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:272:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::pair<_Up, _Tp>’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:277:5: note: candidate: ‘template<class _Tp, class _Up> constexpr _Tp&& std::get(std::pair<_Up, _Tp>&&)’
+  277 |     get(pair<_Up, _Tp>&& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:277:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::pair<_Up, _Tp>’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:282:5: note: candidate: ‘template<class _Tp, class _Up> constexpr const _Tp&& std::get(const std::pair<_Up, _Tp>&&)’
+  282 |     get(const pair<_Up, _Tp>&& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:282:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::pair<_Up, _Tp>’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/tuple:39,
+                 from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/array:361:5: note: candidate: ‘template<long unsigned int _Int, class _Tp, long unsigned int _Nm> constexpr _Tp& std::get(std::array<_Tp, _Nm>&)’
+  361 |     get(array<_Tp, _Nm>& __arr) noexcept
+      |     ^~~
+/usr/include/c++/11/array:361:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::array<_Tp, _Nm>’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/tuple:39,
+                 from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/array:369:5: note: candidate: ‘template<long unsigned int _Int, class _Tp, long unsigned int _Nm> constexpr _Tp&& std::get(std::array<_Tp, _Nm>&&)’
+  369 |     get(array<_Tp, _Nm>&& __arr) noexcept
+      |     ^~~
+/usr/include/c++/11/array:369:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::array<_Tp, _Nm>’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/tuple:39,
+                 from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/array:377:5: note: candidate: ‘template<long unsigned int _Int, class _Tp, long unsigned int _Nm> constexpr const _Tp& std::get(const std::array<_Tp, _Nm>&)’
+  377 |     get(const array<_Tp, _Nm>& __arr) noexcept
+      |     ^~~
+/usr/include/c++/11/array:377:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::array<_Tp, _Nm>’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/tuple:39,
+                 from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/array:385:5: note: candidate: ‘template<long unsigned int _Int, class _Tp, long unsigned int _Nm> constexpr const _Tp&& std::get(const std::array<_Tp, _Nm>&&)’
+  385 |     get(const array<_Tp, _Nm>&& __arr) noexcept
+      |     ^~~
+/usr/include/c++/11/array:385:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::array<_Tp, _Nm>’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1393:5: note: candidate: ‘template<long unsigned int __i, class ... _Elements> constexpr std::__tuple_element_t<__i, std::tuple<_Args2 ...> >& std::get(std::tuple<_Args2 ...>&)’
+ 1393 |     get(tuple<_Elements...>& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1393:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:43: note:   couldn’t deduce template parameter ‘__i’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1399:5: note: candidate: ‘template<long unsigned int __i, class ... _Elements> constexpr std::__tuple_element_t<__i, std::tuple<_Args2 ...> >& std::get(const std::tuple<_Args2 ...>&)’
+ 1399 |     get(const tuple<_Elements...>& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1399:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:43: note:   couldn’t deduce template parameter ‘__i’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1405:5: note: candidate: ‘template<long unsigned int __i, class ... _Elements> constexpr std::__tuple_element_t<__i, std::tuple<_Args2 ...> >&& std::get(std::tuple<_Args2 ...>&&)’
+ 1405 |     get(tuple<_Elements...>&& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1405:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:43: note:   couldn’t deduce template parameter ‘__i’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1414:5: note: candidate: ‘template<long unsigned int __i, class ... _Elements> constexpr std::__tuple_element_t<__i, std::tuple<_Args2 ...> >&& std::get(const std::tuple<_Args2 ...>&&)’
+ 1414 |     get(const tuple<_Elements...>&& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1414:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:43: note:   couldn’t deduce template parameter ‘__i’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1449:5: note: candidate: ‘template<class _Tp, class ... _Types> constexpr _Tp& std::get(std::tuple<_Args2 ...>&)’
+ 1449 |     get(tuple<_Types...>& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1449:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:43: note:   couldn’t deduce template parameter ‘_Tp’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1460:5: note: candidate: ‘template<class _Tp, class ... _Types> constexpr _Tp&& std::get(std::tuple<_Args2 ...>&&)’
+ 1460 |     get(tuple<_Types...>&& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1460:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:43: note:   couldn’t deduce template parameter ‘_Tp’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1471:5: note: candidate: ‘template<class _Tp, class ... _Types> constexpr const _Tp& std::get(const std::tuple<_Args2 ...>&)’
+ 1471 |     get(const tuple<_Types...>& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1471:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:43: note:   couldn’t deduce template parameter ‘_Tp’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1483:5: note: candidate: ‘template<class _Tp, class ... _Types> constexpr const _Tp&& std::get(const std::tuple<_Args2 ...>&&)’
+ 1483 |     get(const tuple<_Types...>&& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1483:5: note:   template argument deduction/substitution failed:
+seisei.cpp:63:43: note:   couldn’t deduce template parameter ‘_Tp’
+   63 |         if (std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+seisei.cpp:64:21: error: no matching function for call to ‘get(std::tuple<int, int, int>&)’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:223:5: note: candidate: ‘template<long unsigned int _Int, class _Tp1, class _Tp2> constexpr typename std::tuple_element<_Int, std::pair<_Tp1, _Tp2> >::type& std::get(std::pair<_Tp1, _Tp2>&)’
+  223 |     get(pair<_Tp1, _Tp2>& __in) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:223:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::pair<_Tp1, _Tp2>’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:228:5: note: candidate: ‘template<long unsigned int _Int, class _Tp1, class _Tp2> constexpr typename std::tuple_element<_Int, std::pair<_Tp1, _Tp2> >::type&& std::get(std::pair<_Tp1, _Tp2>&&)’
+  228 |     get(pair<_Tp1, _Tp2>&& __in) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:228:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::pair<_Tp1, _Tp2>’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:233:5: note: candidate: ‘template<long unsigned int _Int, class _Tp1, class _Tp2> constexpr const typename std::tuple_element<_Int, std::pair<_Tp1, _Tp2> >::type& std::get(const std::pair<_Tp1, _Tp2>&)’
+  233 |     get(const pair<_Tp1, _Tp2>& __in) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:233:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::pair<_Tp1, _Tp2>’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:238:5: note: candidate: ‘template<long unsigned int _Int, class _Tp1, class _Tp2> constexpr const typename std::tuple_element<_Int, std::pair<_Tp1, _Tp2> >::type&& std::get(const std::pair<_Tp1, _Tp2>&&)’
+  238 |     get(const pair<_Tp1, _Tp2>&& __in) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:238:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::pair<_Tp1, _Tp2>’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:247:5: note: candidate: ‘template<class _Tp, class _Up> constexpr _Tp& std::get(std::pair<_T1, _T2>&)’
+  247 |     get(pair<_Tp, _Up>& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:247:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::pair<_T1, _T2>’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:252:5: note: candidate: ‘template<class _Tp, class _Up> constexpr const _Tp& std::get(const std::pair<_T1, _T2>&)’
+  252 |     get(const pair<_Tp, _Up>& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:252:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::pair<_T1, _T2>’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:257:5: note: candidate: ‘template<class _Tp, class _Up> constexpr _Tp&& std::get(std::pair<_T1, _T2>&&)’
+  257 |     get(pair<_Tp, _Up>&& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:257:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::pair<_T1, _T2>’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:262:5: note: candidate: ‘template<class _Tp, class _Up> constexpr const _Tp&& std::get(const std::pair<_T1, _T2>&&)’
+  262 |     get(const pair<_Tp, _Up>&& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:262:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::pair<_T1, _T2>’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:267:5: note: candidate: ‘template<class _Tp, class _Up> constexpr _Tp& std::get(std::pair<_Up, _Tp>&)’
+  267 |     get(pair<_Up, _Tp>& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:267:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::pair<_Up, _Tp>’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:272:5: note: candidate: ‘template<class _Tp, class _Up> constexpr const _Tp& std::get(const std::pair<_Up, _Tp>&)’
+  272 |     get(const pair<_Up, _Tp>& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:272:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::pair<_Up, _Tp>’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:277:5: note: candidate: ‘template<class _Tp, class _Up> constexpr _Tp&& std::get(std::pair<_Up, _Tp>&&)’
+  277 |     get(pair<_Up, _Tp>&& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:277:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::pair<_Up, _Tp>’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:282:5: note: candidate: ‘template<class _Tp, class _Up> constexpr const _Tp&& std::get(const std::pair<_Up, _Tp>&&)’
+  282 |     get(const pair<_Up, _Tp>&& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:282:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::pair<_Up, _Tp>’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/tuple:39,
+                 from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/array:361:5: note: candidate: ‘template<long unsigned int _Int, class _Tp, long unsigned int _Nm> constexpr _Tp& std::get(std::array<_Tp, _Nm>&)’
+  361 |     get(array<_Tp, _Nm>& __arr) noexcept
+      |     ^~~
+/usr/include/c++/11/array:361:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::array<_Tp, _Nm>’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/tuple:39,
+                 from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/array:369:5: note: candidate: ‘template<long unsigned int _Int, class _Tp, long unsigned int _Nm> constexpr _Tp&& std::get(std::array<_Tp, _Nm>&&)’
+  369 |     get(array<_Tp, _Nm>&& __arr) noexcept
+      |     ^~~
+/usr/include/c++/11/array:369:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::array<_Tp, _Nm>’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/tuple:39,
+                 from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/array:377:5: note: candidate: ‘template<long unsigned int _Int, class _Tp, long unsigned int _Nm> constexpr const _Tp& std::get(const std::array<_Tp, _Nm>&)’
+  377 |     get(const array<_Tp, _Nm>& __arr) noexcept
+      |     ^~~
+/usr/include/c++/11/array:377:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::array<_Tp, _Nm>’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/tuple:39,
+                 from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/array:385:5: note: candidate: ‘template<long unsigned int _Int, class _Tp, long unsigned int _Nm> constexpr const _Tp&& std::get(const std::array<_Tp, _Nm>&&)’
+  385 |     get(const array<_Tp, _Nm>&& __arr) noexcept
+      |     ^~~
+/usr/include/c++/11/array:385:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::array<_Tp, _Nm>’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1393:5: note: candidate: ‘template<long unsigned int __i, class ... _Elements> constexpr std::__tuple_element_t<__i, std::tuple<_Args2 ...> >& std::get(std::tuple<_Args2 ...>&)’
+ 1393 |     get(tuple<_Elements...>& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1393:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:21: note:   couldn’t deduce template parameter ‘__i’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1399:5: note: candidate: ‘template<long unsigned int __i, class ... _Elements> constexpr std::__tuple_element_t<__i, std::tuple<_Args2 ...> >& std::get(const std::tuple<_Args2 ...>&)’
+ 1399 |     get(const tuple<_Elements...>& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1399:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:21: note:   couldn’t deduce template parameter ‘__i’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1405:5: note: candidate: ‘template<long unsigned int __i, class ... _Elements> constexpr std::__tuple_element_t<__i, std::tuple<_Args2 ...> >&& std::get(std::tuple<_Args2 ...>&&)’
+ 1405 |     get(tuple<_Elements...>&& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1405:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:21: note:   couldn’t deduce template parameter ‘__i’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1414:5: note: candidate: ‘template<long unsigned int __i, class ... _Elements> constexpr std::__tuple_element_t<__i, std::tuple<_Args2 ...> >&& std::get(const std::tuple<_Args2 ...>&&)’
+ 1414 |     get(const tuple<_Elements...>&& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1414:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:21: note:   couldn’t deduce template parameter ‘__i’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1449:5: note: candidate: ‘template<class _Tp, class ... _Types> constexpr _Tp& std::get(std::tuple<_Args2 ...>&)’
+ 1449 |     get(tuple<_Types...>& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1449:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:21: note:   couldn’t deduce template parameter ‘_Tp’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1460:5: note: candidate: ‘template<class _Tp, class ... _Types> constexpr _Tp&& std::get(std::tuple<_Args2 ...>&&)’
+ 1460 |     get(tuple<_Types...>&& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1460:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:21: note:   couldn’t deduce template parameter ‘_Tp’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1471:5: note: candidate: ‘template<class _Tp, class ... _Types> constexpr const _Tp& std::get(const std::tuple<_Args2 ...>&)’
+ 1471 |     get(const tuple<_Types...>& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1471:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:21: note:   couldn’t deduce template parameter ‘_Tp’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1483:5: note: candidate: ‘template<class _Tp, class ... _Types> constexpr const _Tp&& std::get(const std::tuple<_Args2 ...>&&)’
+ 1483 |     get(const tuple<_Types...>&& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1483:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:21: note:   couldn’t deduce template parameter ‘_Tp’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |             ~~~~~~~~^~~~~
+seisei.cpp:64:43: error: no matching function for call to ‘get(std::tuple<int, int, int>&)’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:223:5: note: candidate: ‘template<long unsigned int _Int, class _Tp1, class _Tp2> constexpr typename std::tuple_element<_Int, std::pair<_Tp1, _Tp2> >::type& std::get(std::pair<_Tp1, _Tp2>&)’
+  223 |     get(pair<_Tp1, _Tp2>& __in) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:223:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::pair<_Tp1, _Tp2>’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:228:5: note: candidate: ‘template<long unsigned int _Int, class _Tp1, class _Tp2> constexpr typename std::tuple_element<_Int, std::pair<_Tp1, _Tp2> >::type&& std::get(std::pair<_Tp1, _Tp2>&&)’
+  228 |     get(pair<_Tp1, _Tp2>&& __in) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:228:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::pair<_Tp1, _Tp2>’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:233:5: note: candidate: ‘template<long unsigned int _Int, class _Tp1, class _Tp2> constexpr const typename std::tuple_element<_Int, std::pair<_Tp1, _Tp2> >::type& std::get(const std::pair<_Tp1, _Tp2>&)’
+  233 |     get(const pair<_Tp1, _Tp2>& __in) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:233:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::pair<_Tp1, _Tp2>’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:238:5: note: candidate: ‘template<long unsigned int _Int, class _Tp1, class _Tp2> constexpr const typename std::tuple_element<_Int, std::pair<_Tp1, _Tp2> >::type&& std::get(const std::pair<_Tp1, _Tp2>&&)’
+  238 |     get(const pair<_Tp1, _Tp2>&& __in) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:238:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::pair<_Tp1, _Tp2>’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:247:5: note: candidate: ‘template<class _Tp, class _Up> constexpr _Tp& std::get(std::pair<_T1, _T2>&)’
+  247 |     get(pair<_Tp, _Up>& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:247:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::pair<_T1, _T2>’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:252:5: note: candidate: ‘template<class _Tp, class _Up> constexpr const _Tp& std::get(const std::pair<_T1, _T2>&)’
+  252 |     get(const pair<_Tp, _Up>& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:252:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::pair<_T1, _T2>’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:257:5: note: candidate: ‘template<class _Tp, class _Up> constexpr _Tp&& std::get(std::pair<_T1, _T2>&&)’
+  257 |     get(pair<_Tp, _Up>&& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:257:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::pair<_T1, _T2>’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:262:5: note: candidate: ‘template<class _Tp, class _Up> constexpr const _Tp&& std::get(const std::pair<_T1, _T2>&&)’
+  262 |     get(const pair<_Tp, _Up>&& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:262:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::pair<_T1, _T2>’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:267:5: note: candidate: ‘template<class _Tp, class _Up> constexpr _Tp& std::get(std::pair<_Up, _Tp>&)’
+  267 |     get(pair<_Up, _Tp>& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:267:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::pair<_Up, _Tp>’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:272:5: note: candidate: ‘template<class _Tp, class _Up> constexpr const _Tp& std::get(const std::pair<_Up, _Tp>&)’
+  272 |     get(const pair<_Up, _Tp>& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:272:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::pair<_Up, _Tp>’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:277:5: note: candidate: ‘template<class _Tp, class _Up> constexpr _Tp&& std::get(std::pair<_Up, _Tp>&&)’
+  277 |     get(pair<_Up, _Tp>&& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:277:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::pair<_Up, _Tp>’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:282:5: note: candidate: ‘template<class _Tp, class _Up> constexpr const _Tp&& std::get(const std::pair<_Up, _Tp>&&)’
+  282 |     get(const pair<_Up, _Tp>&& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:282:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::pair<_Up, _Tp>’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/tuple:39,
+                 from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/array:361:5: note: candidate: ‘template<long unsigned int _Int, class _Tp, long unsigned int _Nm> constexpr _Tp& std::get(std::array<_Tp, _Nm>&)’
+  361 |     get(array<_Tp, _Nm>& __arr) noexcept
+      |     ^~~
+/usr/include/c++/11/array:361:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::array<_Tp, _Nm>’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/tuple:39,
+                 from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/array:369:5: note: candidate: ‘template<long unsigned int _Int, class _Tp, long unsigned int _Nm> constexpr _Tp&& std::get(std::array<_Tp, _Nm>&&)’
+  369 |     get(array<_Tp, _Nm>&& __arr) noexcept
+      |     ^~~
+/usr/include/c++/11/array:369:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::array<_Tp, _Nm>’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/tuple:39,
+                 from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/array:377:5: note: candidate: ‘template<long unsigned int _Int, class _Tp, long unsigned int _Nm> constexpr const _Tp& std::get(const std::array<_Tp, _Nm>&)’
+  377 |     get(const array<_Tp, _Nm>& __arr) noexcept
+      |     ^~~
+/usr/include/c++/11/array:377:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::array<_Tp, _Nm>’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/tuple:39,
+                 from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/array:385:5: note: candidate: ‘template<long unsigned int _Int, class _Tp, long unsigned int _Nm> constexpr const _Tp&& std::get(const std::array<_Tp, _Nm>&&)’
+  385 |     get(const array<_Tp, _Nm>&& __arr) noexcept
+      |     ^~~
+/usr/include/c++/11/array:385:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::array<_Tp, _Nm>’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1393:5: note: candidate: ‘template<long unsigned int __i, class ... _Elements> constexpr std::__tuple_element_t<__i, std::tuple<_Args2 ...> >& std::get(std::tuple<_Args2 ...>&)’
+ 1393 |     get(tuple<_Elements...>& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1393:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:43: note:   couldn’t deduce template parameter ‘__i’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1399:5: note: candidate: ‘template<long unsigned int __i, class ... _Elements> constexpr std::__tuple_element_t<__i, std::tuple<_Args2 ...> >& std::get(const std::tuple<_Args2 ...>&)’
+ 1399 |     get(const tuple<_Elements...>& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1399:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:43: note:   couldn’t deduce template parameter ‘__i’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1405:5: note: candidate: ‘template<long unsigned int __i, class ... _Elements> constexpr std::__tuple_element_t<__i, std::tuple<_Args2 ...> >&& std::get(std::tuple<_Args2 ...>&&)’
+ 1405 |     get(tuple<_Elements...>&& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1405:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:43: note:   couldn’t deduce template parameter ‘__i’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1414:5: note: candidate: ‘template<long unsigned int __i, class ... _Elements> constexpr std::__tuple_element_t<__i, std::tuple<_Args2 ...> >&& std::get(const std::tuple<_Args2 ...>&&)’
+ 1414 |     get(const tuple<_Elements...>&& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1414:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:43: note:   couldn’t deduce template parameter ‘__i’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1449:5: note: candidate: ‘template<class _Tp, class ... _Types> constexpr _Tp& std::get(std::tuple<_Args2 ...>&)’
+ 1449 |     get(tuple<_Types...>& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1449:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:43: note:   couldn’t deduce template parameter ‘_Tp’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1460:5: note: candidate: ‘template<class _Tp, class ... _Types> constexpr _Tp&& std::get(std::tuple<_Args2 ...>&&)’
+ 1460 |     get(tuple<_Types...>&& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1460:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:43: note:   couldn’t deduce template parameter ‘_Tp’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1471:5: note: candidate: ‘template<class _Tp, class ... _Types> constexpr const _Tp& std::get(const std::tuple<_Args2 ...>&)’
+ 1471 |     get(const tuple<_Types...>& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1471:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:43: note:   couldn’t deduce template parameter ‘_Tp’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1483:5: note: candidate: ‘template<class _Tp, class ... _Types> constexpr const _Tp&& std::get(const std::tuple<_Args2 ...>&&)’
+ 1483 |     get(const tuple<_Types...>&& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1483:5: note:   template argument deduction/substitution failed:
+seisei.cpp:64:43: note:   couldn’t deduce template parameter ‘_Tp’
+   64 |             std::get(*it) == a || std::get(*it) == b ||
+      |                                   ~~~~~~~~^~~~~
+seisei.cpp:65:21: error: no matching function for call to ‘get(std::tuple<int, int, int>&)’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:223:5: note: candidate: ‘template<long unsigned int _Int, class _Tp1, class _Tp2> constexpr typename std::tuple_element<_Int, std::pair<_Tp1, _Tp2> >::type& std::get(std::pair<_Tp1, _Tp2>&)’
+  223 |     get(pair<_Tp1, _Tp2>& __in) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:223:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::pair<_Tp1, _Tp2>’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:228:5: note: candidate: ‘template<long unsigned int _Int, class _Tp1, class _Tp2> constexpr typename std::tuple_element<_Int, std::pair<_Tp1, _Tp2> >::type&& std::get(std::pair<_Tp1, _Tp2>&&)’
+  228 |     get(pair<_Tp1, _Tp2>&& __in) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:228:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::pair<_Tp1, _Tp2>’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:233:5: note: candidate: ‘template<long unsigned int _Int, class _Tp1, class _Tp2> constexpr const typename std::tuple_element<_Int, std::pair<_Tp1, _Tp2> >::type& std::get(const std::pair<_Tp1, _Tp2>&)’
+  233 |     get(const pair<_Tp1, _Tp2>& __in) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:233:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::pair<_Tp1, _Tp2>’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:238:5: note: candidate: ‘template<long unsigned int _Int, class _Tp1, class _Tp2> constexpr const typename std::tuple_element<_Int, std::pair<_Tp1, _Tp2> >::type&& std::get(const std::pair<_Tp1, _Tp2>&&)’
+  238 |     get(const pair<_Tp1, _Tp2>&& __in) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:238:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::pair<_Tp1, _Tp2>’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:247:5: note: candidate: ‘template<class _Tp, class _Up> constexpr _Tp& std::get(std::pair<_T1, _T2>&)’
+  247 |     get(pair<_Tp, _Up>& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:247:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::pair<_T1, _T2>’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:252:5: note: candidate: ‘template<class _Tp, class _Up> constexpr const _Tp& std::get(const std::pair<_T1, _T2>&)’
+  252 |     get(const pair<_Tp, _Up>& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:252:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::pair<_T1, _T2>’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:257:5: note: candidate: ‘template<class _Tp, class _Up> constexpr _Tp&& std::get(std::pair<_T1, _T2>&&)’
+  257 |     get(pair<_Tp, _Up>&& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:257:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::pair<_T1, _T2>’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:262:5: note: candidate: ‘template<class _Tp, class _Up> constexpr const _Tp&& std::get(const std::pair<_T1, _T2>&&)’
+  262 |     get(const pair<_Tp, _Up>&& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:262:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::pair<_T1, _T2>’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:267:5: note: candidate: ‘template<class _Tp, class _Up> constexpr _Tp& std::get(std::pair<_Up, _Tp>&)’
+  267 |     get(pair<_Up, _Tp>& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:267:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::pair<_Up, _Tp>’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:272:5: note: candidate: ‘template<class _Tp, class _Up> constexpr const _Tp& std::get(const std::pair<_Up, _Tp>&)’
+  272 |     get(const pair<_Up, _Tp>& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:272:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::pair<_Up, _Tp>’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:277:5: note: candidate: ‘template<class _Tp, class _Up> constexpr _Tp&& std::get(std::pair<_Up, _Tp>&&)’
+  277 |     get(pair<_Up, _Tp>&& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:277:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::pair<_Up, _Tp>’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:282:5: note: candidate: ‘template<class _Tp, class _Up> constexpr const _Tp&& std::get(const std::pair<_Up, _Tp>&&)’
+  282 |     get(const pair<_Up, _Tp>&& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:282:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::pair<_Up, _Tp>’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/tuple:39,
+                 from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/array:361:5: note: candidate: ‘template<long unsigned int _Int, class _Tp, long unsigned int _Nm> constexpr _Tp& std::get(std::array<_Tp, _Nm>&)’
+  361 |     get(array<_Tp, _Nm>& __arr) noexcept
+      |     ^~~
+/usr/include/c++/11/array:361:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::array<_Tp, _Nm>’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/tuple:39,
+                 from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/array:369:5: note: candidate: ‘template<long unsigned int _Int, class _Tp, long unsigned int _Nm> constexpr _Tp&& std::get(std::array<_Tp, _Nm>&&)’
+  369 |     get(array<_Tp, _Nm>&& __arr) noexcept
+      |     ^~~
+/usr/include/c++/11/array:369:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::array<_Tp, _Nm>’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/tuple:39,
+                 from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/array:377:5: note: candidate: ‘template<long unsigned int _Int, class _Tp, long unsigned int _Nm> constexpr const _Tp& std::get(const std::array<_Tp, _Nm>&)’
+  377 |     get(const array<_Tp, _Nm>& __arr) noexcept
+      |     ^~~
+/usr/include/c++/11/array:377:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::array<_Tp, _Nm>’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/tuple:39,
+                 from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/array:385:5: note: candidate: ‘template<long unsigned int _Int, class _Tp, long unsigned int _Nm> constexpr const _Tp&& std::get(const std::array<_Tp, _Nm>&&)’
+  385 |     get(const array<_Tp, _Nm>&& __arr) noexcept
+      |     ^~~
+/usr/include/c++/11/array:385:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:21: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::array<_Tp, _Nm>’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1393:5: note: candidate: ‘template<long unsigned int __i, class ... _Elements> constexpr std::__tuple_element_t<__i, std::tuple<_Args2 ...> >& std::get(std::tuple<_Args2 ...>&)’
+ 1393 |     get(tuple<_Elements...>& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1393:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:21: note:   couldn’t deduce template parameter ‘__i’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1399:5: note: candidate: ‘template<long unsigned int __i, class ... _Elements> constexpr std::__tuple_element_t<__i, std::tuple<_Args2 ...> >& std::get(const std::tuple<_Args2 ...>&)’
+ 1399 |     get(const tuple<_Elements...>& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1399:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:21: note:   couldn’t deduce template parameter ‘__i’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1405:5: note: candidate: ‘template<long unsigned int __i, class ... _Elements> constexpr std::__tuple_element_t<__i, std::tuple<_Args2 ...> >&& std::get(std::tuple<_Args2 ...>&&)’
+ 1405 |     get(tuple<_Elements...>&& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1405:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:21: note:   couldn’t deduce template parameter ‘__i’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1414:5: note: candidate: ‘template<long unsigned int __i, class ... _Elements> constexpr std::__tuple_element_t<__i, std::tuple<_Args2 ...> >&& std::get(const std::tuple<_Args2 ...>&&)’
+ 1414 |     get(const tuple<_Elements...>&& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1414:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:21: note:   couldn’t deduce template parameter ‘__i’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1449:5: note: candidate: ‘template<class _Tp, class ... _Types> constexpr _Tp& std::get(std::tuple<_Args2 ...>&)’
+ 1449 |     get(tuple<_Types...>& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1449:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:21: note:   couldn’t deduce template parameter ‘_Tp’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1460:5: note: candidate: ‘template<class _Tp, class ... _Types> constexpr _Tp&& std::get(std::tuple<_Args2 ...>&&)’
+ 1460 |     get(tuple<_Types...>&& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1460:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:21: note:   couldn’t deduce template parameter ‘_Tp’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1471:5: note: candidate: ‘template<class _Tp, class ... _Types> constexpr const _Tp& std::get(const std::tuple<_Args2 ...>&)’
+ 1471 |     get(const tuple<_Types...>& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1471:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:21: note:   couldn’t deduce template parameter ‘_Tp’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |             ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1483:5: note: candidate: ‘template<class _Tp, class ... _Types> constexpr const _Tp&& std::get(const std::tuple<_Args2 ...>&&)’
+ 1483 |     get(const tuple<_Types...>&& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1483:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:21: note:   couldn’t deduce template parameter ‘_Tp’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |             ~~~~~~~~^~~~~
+seisei.cpp:65:43: error: no matching function for call to ‘get(std::tuple<int, int, int>&)’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:223:5: note: candidate: ‘template<long unsigned int _Int, class _Tp1, class _Tp2> constexpr typename std::tuple_element<_Int, std::pair<_Tp1, _Tp2> >::type& std::get(std::pair<_Tp1, _Tp2>&)’
+  223 |     get(pair<_Tp1, _Tp2>& __in) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:223:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::pair<_Tp1, _Tp2>’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:228:5: note: candidate: ‘template<long unsigned int _Int, class _Tp1, class _Tp2> constexpr typename std::tuple_element<_Int, std::pair<_Tp1, _Tp2> >::type&& std::get(std::pair<_Tp1, _Tp2>&&)’
+  228 |     get(pair<_Tp1, _Tp2>&& __in) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:228:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::pair<_Tp1, _Tp2>’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:233:5: note: candidate: ‘template<long unsigned int _Int, class _Tp1, class _Tp2> constexpr const typename std::tuple_element<_Int, std::pair<_Tp1, _Tp2> >::type& std::get(const std::pair<_Tp1, _Tp2>&)’
+  233 |     get(const pair<_Tp1, _Tp2>& __in) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:233:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::pair<_Tp1, _Tp2>’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:238:5: note: candidate: ‘template<long unsigned int _Int, class _Tp1, class _Tp2> constexpr const typename std::tuple_element<_Int, std::pair<_Tp1, _Tp2> >::type&& std::get(const std::pair<_Tp1, _Tp2>&&)’
+  238 |     get(const pair<_Tp1, _Tp2>&& __in) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:238:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::pair<_Tp1, _Tp2>’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:247:5: note: candidate: ‘template<class _Tp, class _Up> constexpr _Tp& std::get(std::pair<_T1, _T2>&)’
+  247 |     get(pair<_Tp, _Up>& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:247:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::pair<_T1, _T2>’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:252:5: note: candidate: ‘template<class _Tp, class _Up> constexpr const _Tp& std::get(const std::pair<_T1, _T2>&)’
+  252 |     get(const pair<_Tp, _Up>& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:252:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::pair<_T1, _T2>’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:257:5: note: candidate: ‘template<class _Tp, class _Up> constexpr _Tp&& std::get(std::pair<_T1, _T2>&&)’
+  257 |     get(pair<_Tp, _Up>&& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:257:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::pair<_T1, _T2>’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:262:5: note: candidate: ‘template<class _Tp, class _Up> constexpr const _Tp&& std::get(const std::pair<_T1, _T2>&&)’
+  262 |     get(const pair<_Tp, _Up>&& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:262:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::pair<_T1, _T2>’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:267:5: note: candidate: ‘template<class _Tp, class _Up> constexpr _Tp& std::get(std::pair<_Up, _Tp>&)’
+  267 |     get(pair<_Up, _Tp>& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:267:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::pair<_Up, _Tp>’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:272:5: note: candidate: ‘template<class _Tp, class _Up> constexpr const _Tp& std::get(const std::pair<_Up, _Tp>&)’
+  272 |     get(const pair<_Up, _Tp>& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:272:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::pair<_Up, _Tp>’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:277:5: note: candidate: ‘template<class _Tp, class _Up> constexpr _Tp&& std::get(std::pair<_Up, _Tp>&&)’
+  277 |     get(pair<_Up, _Tp>&& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:277:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::pair<_Up, _Tp>’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/algorithm:60,
+                 from seisei.cpp:5:
+/usr/include/c++/11/utility:282:5: note: candidate: ‘template<class _Tp, class _Up> constexpr const _Tp&& std::get(const std::pair<_Up, _Tp>&&)’
+  282 |     get(const pair<_Up, _Tp>&& __p) noexcept
+      |     ^~~
+/usr/include/c++/11/utility:282:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::pair<_Up, _Tp>’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/tuple:39,
+                 from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/array:361:5: note: candidate: ‘template<long unsigned int _Int, class _Tp, long unsigned int _Nm> constexpr _Tp& std::get(std::array<_Tp, _Nm>&)’
+  361 |     get(array<_Tp, _Nm>& __arr) noexcept
+      |     ^~~
+/usr/include/c++/11/array:361:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::array<_Tp, _Nm>’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/tuple:39,
+                 from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/array:369:5: note: candidate: ‘template<long unsigned int _Int, class _Tp, long unsigned int _Nm> constexpr _Tp&& std::get(std::array<_Tp, _Nm>&&)’
+  369 |     get(array<_Tp, _Nm>&& __arr) noexcept
+      |     ^~~
+/usr/include/c++/11/array:369:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘std::array<_Tp, _Nm>’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/tuple:39,
+                 from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/array:377:5: note: candidate: ‘template<long unsigned int _Int, class _Tp, long unsigned int _Nm> constexpr const _Tp& std::get(const std::array<_Tp, _Nm>&)’
+  377 |     get(const array<_Tp, _Nm>& __arr) noexcept
+      |     ^~~
+/usr/include/c++/11/array:377:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::array<_Tp, _Nm>’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/tuple:39,
+                 from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/array:385:5: note: candidate: ‘template<long unsigned int _Int, class _Tp, long unsigned int _Nm> constexpr const _Tp&& std::get(const std::array<_Tp, _Nm>&&)’
+  385 |     get(const array<_Tp, _Nm>&& __arr) noexcept
+      |     ^~~
+/usr/include/c++/11/array:385:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:43: note:   ‘std::tuple<int, int, int>’ is not derived from ‘const std::array<_Tp, _Nm>’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1393:5: note: candidate: ‘template<long unsigned int __i, class ... _Elements> constexpr std::__tuple_element_t<__i, std::tuple<_Args2 ...> >& std::get(std::tuple<_Args2 ...>&)’
+ 1393 |     get(tuple<_Elements...>& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1393:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:43: note:   couldn’t deduce template parameter ‘__i’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1399:5: note: candidate: ‘template<long unsigned int __i, class ... _Elements> constexpr std::__tuple_element_t<__i, std::tuple<_Args2 ...> >& std::get(const std::tuple<_Args2 ...>&)’
+ 1399 |     get(const tuple<_Elements...>& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1399:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:43: note:   couldn’t deduce template parameter ‘__i’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1405:5: note: candidate: ‘template<long unsigned int __i, class ... _Elements> constexpr std::__tuple_element_t<__i, std::tuple<_Args2 ...> >&& std::get(std::tuple<_Args2 ...>&&)’
+ 1405 |     get(tuple<_Elements...>&& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1405:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:43: note:   couldn’t deduce template parameter ‘__i’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1414:5: note: candidate: ‘template<long unsigned int __i, class ... _Elements> constexpr std::__tuple_element_t<__i, std::tuple<_Args2 ...> >&& std::get(const std::tuple<_Args2 ...>&&)’
+ 1414 |     get(const tuple<_Elements...>&& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1414:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:43: note:   couldn’t deduce template parameter ‘__i’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1449:5: note: candidate: ‘template<class _Tp, class ... _Types> constexpr _Tp& std::get(std::tuple<_Args2 ...>&)’
+ 1449 |     get(tuple<_Types...>& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1449:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:43: note:   couldn’t deduce template parameter ‘_Tp’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1460:5: note: candidate: ‘template<class _Tp, class ... _Types> constexpr _Tp&& std::get(std::tuple<_Args2 ...>&&)’
+ 1460 |     get(tuple<_Types...>&& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1460:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:43: note:   couldn’t deduce template parameter ‘_Tp’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1471:5: note: candidate: ‘template<class _Tp, class ... _Types> constexpr const _Tp& std::get(const std::tuple<_Args2 ...>&)’
+ 1471 |     get(const tuple<_Types...>& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1471:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:43: note:   couldn’t deduce template parameter ‘_Tp’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |                                   ~~~~~~~~^~~~~
+In file included from /usr/include/c++/11/functional:54,
+                 from /usr/include/c++/11/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/11/algorithm:74,
+                 from seisei.cpp:5:
+/usr/include/c++/11/tuple:1483:5: note: candidate: ‘template<class _Tp, class ... _Types> constexpr const _Tp&& std::get(const std::tuple<_Args2 ...>&&)’
+ 1483 |     get(const tuple<_Types...>&& __t) noexcept
+      |     ^~~
+/usr/include/c++/11/tuple:1483:5: note:   template argument deduction/substitution failed:
+seisei.cpp:65:43: note:   couldn’t deduce template parameter ‘_Tp’
+   65 |             std::get(*it) == a || std::get(*it) == b)
+      |                                   ~~~~~~~~^~~~~

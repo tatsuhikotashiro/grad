@@ -34,9 +34,6 @@ void minusTime(std::vector<int> &SeatsStay)
 int main(int argc, char *argv[])
 {
     std::vector<int> SeatsStay1(28);
-    // for (int i : SeatsStay1){
-    //     std::cout << i << std::endl;
-    // }
     std::vector<int> SeatsStay2(11);                             // 2人隣接してやるとき
     std::vector<int> SeatsStay3(10);                             // 3人隣接してやるとき
     std::vector<int> SeatsStay4(9);                              // 3人隣接してやるとき

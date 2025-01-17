@@ -20,6 +20,17 @@ bool fifo(int stayTime, int group, std::vector<int> &customerSeatsStayTime, std:
     return false;
 }
 
+void checkSeatsAvailability(std::vector<int> &customerSeatsStayTime, bool availableSeats[]){
+    for(int i = 0;i < (int)customerSeatsStayTime.size();i++){
+        if(customerSeatsStayTime[i] == 0){
+            availableSeats[i] = true;
+        }
+        else{
+            availableSeats[i] = false;
+        }
+    }
+}
+
 bool siro(int stayTime, int group, std::vector<int> &customerSeatsStayTime, std::vector<int> &seatCapacity) {
     std::vector<int> availableSeats; 
 
