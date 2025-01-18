@@ -146,11 +146,11 @@ int main(int argc, char *argv[])
                 data.at(waitingCustomerNumber).push_back(timeMinutes - data.at(waitingCustomerNumber).at(0)); // 修正: at(0) を at(1) に変更
                 waitingCustomerNumber++;                                                                      // 待ち顧客の先頭を次に進める
 
-                for (int i = 0; i < table_num; i++)
-                {
-                    std::cout << waiting_time_for_seats[i] << " ";
-                }
-                std::cout << std::endl;
+                // for (int i = 0; i < table_num; i++)
+                // {
+                //     std::cout << waiting_time_for_seats[i] << " ";
+                // }
+                // std::cout << std::endl;
 
                 if (waitingCustomerNumber >= (int)data.size()) // 最後まで行ったらマイナスにして顧客を案内しきったことを示す
                 {
@@ -261,7 +261,7 @@ int main(int argc, char *argv[])
         }
         std::cout << std::endl;
     }
-    std::string outputFilename = "waitingTime.txt";
+    std::string outputFilename = "waitingTime01.txt";
     std::ofstream outputFile(outputFilename);
     if (!outputFile.is_open())
     {
@@ -269,14 +269,20 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    // std::cout << data.at(0).size() << std::endl;
+    // for (int i = 0; i < (int)data.size(); i++)
+    // {
+    //     for (int j = 0; j < (int)data.at(i).at(2); j++)
+    //     {
+    //         outputFile << data.at(i).at(3) << std::endl;
+    //     }
+    // }
+
+    // グループごとに記述する場合
     for (int i = 0; i < (int)data.size(); i++)
     {
-        for (int j = 0; j < (int)data.at(i).at(2); j++)
-        {
-            outputFile << data.at(i).at(3) << std::endl;
-        }
+        outputFile << data[i][3] << std::endl;
     }
+
     outputFile.close();
     std::cout << "待ち時間は" << outputFilename << "に書き込みました" << std::endl;
 

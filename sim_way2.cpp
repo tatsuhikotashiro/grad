@@ -6,6 +6,9 @@
 #include <random>
 #include <string>
 #include <iomanip>
+#include <filesystem>
+
+namespace fs = std::filesystem;
 
 struct Customer
 {
@@ -58,24 +61,27 @@ void update_table_status(int target_idx, std::vector<CombineTableInfo> combine_l
         // target_idx番のテーブルの残り待ち時間を元となるテーブルにコピーする
         if (table.table_idx == target_idx)
         {
-            std::cout << target_idx << std::endl;
             for (int i = 0; i < table.combined_size; i++)
             {
-                std::cout << table.combined_table_idx[i] << std::endl;
+                // std::cout << target_idx << "コピー" << waiting_time_for_seats[target_idx] << "to" << table.combined_table_idx[i] << std::endl;
                 waiting_time_for_seats[table.combined_table_idx[i]] = waiting_time_for_seats[target_idx];
             }
-            return;
         }
+    }
+    for (CombineTableInfo table : combine_list)
+    {
         // target_idx番のテーブルを使ってテーブルを組み合わせる場合は組み合わせ元の
         // テーブルの残り待ち時間の最大値を組み合わせ先のテーブルの待ち時間にコピーする
-        for (int j = 0; j < table.combined_size; j++)
-        {
-            if (table.combined_table_idx[j] == target_idx)
-            {
-                waiting_time_for_seats[target_idx] = max_waiting_time(table.combined_table_idx, table.combined_size, waiting_time_for_seats);
-
-            }
-        }
+        // for (int j = 0; j < table.combined_size; j++)
+        // {
+        //     // std::cout << table.combined_table_idx[j] <<" "<< target_idx << std::endl;
+        //     if (table.combined_table_idx[j] == target_idx)
+        //     {
+                // std::cout << "グループ元からコピー" << max_waiting_time(table.combined_table_idx, table.combined_size, waiting_time_for_seats) << "to" << table.table_idx << std::endl;
+                waiting_time_for_seats[table.table_idx] = max_waiting_time(table.combined_table_idx, table.combined_size, waiting_time_for_seats);
+        //     }
+        // }
+        // std::cout << "----\n";
     }
 }
 
@@ -104,7 +110,7 @@ int method_1(std::vector<int> &indexes_of_waiting_customers, std::vector<Custome
     return -1; // 選べなければ負の値を返す
 }
 
-bool simple_assign(int current_time, std::vector<int> &indexes_of_waiting_customers, int target, std::vector<Customer> &customers, int waiting_time_for_seats[], int seats_capacity[], int size, std::vector<CombineTableInfo> combine_list)
+bool simple_assign(int current_time, std::vector<int> &indexes_of_waiting_customers, int target, std::vector<Customer> &customers, int waiting_time_for_seats[], int seats_capacity[], int size, std::vector<CombineTableInfo> &combine_list)
 {
     // std::cout << target << "の割り当てを試みています\n"<< std::endl;
     for (int i = 0; i < size; i++)
@@ -113,11 +119,11 @@ bool simple_assign(int current_time, std::vector<int> &indexes_of_waiting_custom
         if (waiting_time_for_seats[i] == 0 && customers[target].group_size <= seats_capacity[i])
         {
             waiting_time_for_seats[i] = customers[target].service_time;
+            std::cout << i << "番目の席に" << customers[target].service_time << "分を割当てました";
             customers[target].waiting_time = current_time - customers[target].arrival_time;
 
-            // std::cout << customers[target].waiting_time<< std::endl;
-
             indexes_of_waiting_customers.erase(std::remove(indexes_of_waiting_customers.begin(), indexes_of_waiting_customers.end(), target), indexes_of_waiting_customers.end());
+            std::cout << "i=" << i << std::endl;
             update_table_status(i, combine_list, waiting_time_for_seats);
             return true;
         }
@@ -145,20 +151,20 @@ int main(int argc, char *argv[])
     std::vector<CombineTableInfo> combine_list;
     for (int i = 0; i < 11; ++i)
     {
-        int initial_indices[4] = {i, i+1, -1, -1};
-        CombineTableInfo info2(i, 2, initial_indices);
+        int initial_indices2[4] = {i, i + 1, -1, -1};
+        CombineTableInfo info2(i + 12, 2, initial_indices2);
         combine_list.push_back(info2);
     }
     for (int i = 0; i < 10; ++i)
     {
-        int initial_indices[4] = {i, i+1, i+2, -1};
-        CombineTableInfo info3(i, 3, initial_indices);
+        int initial_indices3[4] = {i, i + 1, i + 2, -1};
+        CombineTableInfo info3(i + 12 + 11, 3, initial_indices3);
         combine_list.push_back(info3);
     }
     for (int i = 0; i < 9; ++i)
     {
-        int initial_indices[4] = {i, i+1, i+2, i+3};
-        CombineTableInfo info4(i, 4, initial_indices);
+        int initial_indices4[4] = {i, i + 1, i + 2, i + 3};
+        CombineTableInfo info4(i + 12 + 11 + 10, 4, initial_indices4);
         combine_list.push_back(info4);
     }
 
@@ -245,9 +251,9 @@ int main(int argc, char *argv[])
         {
             // 割当てを試みる客のindexの選択
 
-            int selected_index = fifo(indexes_of_waiting_customers);
+            // int selected_index = fifo(indexes_of_waiting_customers);
 
-            // int selected_index = method_1(indexes_of_waiting_customers, customers, waiting_time_for_seats, seats_capacity, table_num);
+            int selected_index = method_1(indexes_of_waiting_customers, customers, waiting_time_for_seats, seats_capacity, table_num);
             // std::cout << selected_index << "が選択されています\n";
             if (selected_index < 0)
                 break;
@@ -262,7 +268,7 @@ int main(int argc, char *argv[])
             }
             for (int i = 0; i < table_num; i++)
             {
-                std::cout << std::setw(3)<< waiting_time_for_seats[i];
+                std::cout << std::setw(3) << waiting_time_for_seats[i];
             }
             std::cout << std::endl;
         }
@@ -271,21 +277,32 @@ int main(int argc, char *argv[])
         // 各座席の残り滞在時間を一秒減らす
         minus_time(waiting_time_for_seats, table_num);
     }
-    std::string outputFilename = "waiting_time.txt";
-    std::ofstream outputFile(outputFilename);
+
+    const std::string base_name = "waiting_time";
+    const std::string extension = ".txt";
+    int file_number = 1;
+    // fs = std::filesystemであることに注意する
+    fs::path current_dir = fs::current_path();
+
+    // 重複したファイル名を出力しないようにしてファイルを比較できるようにする
+    while (fs::exists(current_dir / (base_name + (file_number < 10 ? "0" :"") + std::to_string(file_number) + extension))) {
+        file_number++;
+    }
+    std::string output_filename = base_name + (file_number < 10 ? "0" :"") + std::to_string(file_number) + extension;
+
+    std::ofstream outputFile(output_filename);
     if (!outputFile.is_open())
     {
         std::cerr << "出力ファイルを開けませんでした。" << std::endl;
         return 1;
     }
 
+    // 人数分で出力する場合
     for (int i = 0; i < (int)customers.size(); i++)
     {
         for (int j = 0; j < customers[i].group_size; j++)
         {
-            // std::cout << "書き込み" << std::endl;
             outputFile << customers[i].waiting_time << std::endl;
-            // std::cout << "書き込み終わり" << std::endl;
         }
     }
 
@@ -296,5 +313,5 @@ int main(int argc, char *argv[])
     // }
 
     outputFile.close();
-    std::cout << "待ち時間は" << outputFilename << "に書き込みました" << std::endl;
+    std::cout << "待ち時間は" << output_filename << "に書き込みました" << std::endl;
 }
